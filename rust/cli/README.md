@@ -314,7 +314,7 @@ I suggested exploring the CLI options using --help (both at top and command leve
 
 There are obvious ways to enhance the tool that I did not have time for:
 
-1. Also read DispatchId and ProcessId logs, and use them to translate from transaction hashes to message ids. That will allow more complete and straightforward tracking of messages across chains and event types.
+1. Consider reading DispatchId and ProcessId logs, and use them to translate from transaction hashes to message ids. Might not be needed, alternatively can calculate message id from message That will allowd tracking of messages across chains and event types.
 2. Also read (and link via message id) the GasPayment events of gas paymasters.
 3. Support reading from both origin and destination chains from one query invocation and, by reading all event types and linking by message id, report the status of transactions (dispatched -> paid for -> processed).
 4. Add reading of ReceivedMessage events of the TestRecipient contract, and/or other relevant events.
