@@ -108,9 +108,6 @@ Once the contracts are compiled (or `build.rs` removed):
 
 ```
 cd path/to/hyperlane-monorepo/rust/cli
-
-# Avoids git reporting changes, not needed if build.rs removed instead
-cargo fmt
 ```
 
 You can build and view the documentation:
@@ -123,6 +120,12 @@ Build the binaries:
 
 ```
 cargo build
+```
+
+If you want to avoid git reporting changes after contract interfaces have been regenerated:
+
+```
+cargo fmt
 ```
 
 Run automated tests:
