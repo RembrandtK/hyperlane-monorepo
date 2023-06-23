@@ -308,7 +308,7 @@ Process in block 3749591 to 80001 domain:
 
 Notice that the last log entry is not a Dispatch but a Process. The query command performed two underlying queries (ordering and deduplicating combined results, although in this case there would be no duplicates). One query on Dispatch events, and one on Process events.
 
-The last Process item was relayed by a relayer from the Mumbai mailbox to the Sepolia mailbox. Hyperlane in action!
+The last Process item was relayed by a relayer from the Mumbai mailbox to the Sepolia mailbox. Hyperlane in action! Note that relaying speed is variable, and you might not have to wait for the message to appear.
 
 I suggested exploring the CLI options using --help (both at top and command level). Not everything has been equally well tested.
 
@@ -320,8 +320,6 @@ There are obvious ways to enhance the tool that I did not have time for:
 4. Add reading of ReceivedMessage events of the TestRecipient contract, and/or other relevant events.
 5. Consider if other information should be (optionally) extracted, for example the message sent.
 6. There are a lot of rough edges (minimal unit tests, incomplete documentation, code to be cleanup up and refactored).
-
-At time of writing there is a bug where specifying the origin and destination chains results in not all matching logs being displayed. I hope to fix it before creating the PR. It appears to work well with just using `:$SENDER::$RECIPIENT` as sufficiently restrictive query instead of `$ORIGIN:$SENDER:$DESTINATION:$RECIPIENT`, with the second not picking up Process events that should match.
 
 Note that although not heavily tested, the tool supports providing multiple queries at once. For example for anything sent by $SENDER or to $RECIPIENT:
 
