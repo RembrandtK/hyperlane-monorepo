@@ -67,7 +67,7 @@ Usage: hl <URL> <CONTRACT> pay [OPTIONS] <DEST> <MESSAGE_ID> [GAS]
 Arguments:
   <DEST>        Destination chain identifier (unsigned integer)
   <MESSAGE_ID>  Id of message to pay for
-  [GAS]         Gas to pay on destination chain (will be converted according gas price and exchange rate) [default: 10000]
+  [GAS]         Gas to pay on destination chain (will be converted according to gas price and exchange rate) [default: 10000]
 
 Options:
   -k, --key <KEY>  Private key (optional, if needed to sign), as H256 hex string (64 characters), optionally prefixed with 0x
@@ -123,6 +123,12 @@ Build the binaries:
 
 ```
 cargo build
+```
+
+Run automated tests:
+
+```
+cargo test
 ```
 
 # Test Walkthrough

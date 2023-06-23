@@ -11,6 +11,7 @@ use super::anvil::AnvilInstanceWrapper;
 use hyperlane_core::{H160, H256};
 use std::{sync::Arc, time::Duration};
 
+/// Mock environment for testing, running an Anvil instance with (mock) Hyperlane contracts.
 #[derive(Debug)]
 pub struct MockEnvironment {
     #[allow(dead_code)] // Not exposed; need to keep it alive.

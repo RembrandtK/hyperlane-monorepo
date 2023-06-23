@@ -39,6 +39,7 @@ pub async fn dispatch<M: Middleware + 'static>(
 
             // TODO: ID lookup path coincidentally works for now, but this is not a reliable way to get the message ID.
             // Should be based on iterating through logs and matching topics[0] to event signature.
+            // And it has broken the unit test that use a mock environment.
             let id = receipt.logs[1].topics[1];
             println!("  Message ID: {:?}", id);
         }

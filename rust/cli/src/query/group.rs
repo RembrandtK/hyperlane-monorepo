@@ -80,15 +80,12 @@ impl MailboxLogs {
         start_block: u64,
         end_block: u64,
     ) -> Result<Self> {
-        // println!("start_block: {}", start_block);
-        // println!("end_block: {}", end_block);
-
         let mut logs = vec![];
 
         if let Some(match_elements) = matching_list.0 {
             for match_element in match_elements {
                 if match_element.origin_domain.matches(&chain_id) {
-                    // We are looking at the origin mailbox, so look at dispatch events
+                    // We are (or might be) looking at the origin mailbox, so look at dispatch events
                     logs.push(
                         build_log(
                             &mailbox,
@@ -103,7 +100,7 @@ impl MailboxLogs {
                 }
 
                 if match_element.destination_domain.matches(&chain_id) {
-                    // We are looking at the destination mailbox, so look at process events
+                    // We are (or might be) looking at the destination mailbox, so look at process events
                     logs.push(
                         build_log(
                             &mailbox,

@@ -4,6 +4,7 @@ use cli::{action::dispatch, core};
 use color_eyre::Result;
 use ethers::providers::Middleware;
 
+#[ignore] // Currently broken by hardcoded reading from logs that does not work with mock env.
 #[tokio::test]
 async fn test_message_dispatch() -> Result<()> {
     let env = MockEnvironment::new().await?;

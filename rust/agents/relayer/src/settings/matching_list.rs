@@ -83,7 +83,10 @@ impl Filter<u32> {
 #[allow(dead_code)] // False positive, due being in both bin and lib?
 impl Filter<H256> {
     pub fn from_csv(csv: &str) -> Result<Self> {
-        let items: Vec<H256> = csv_to_h160_vec(csv)?.iter().map(|h| H256::from(*h)).collect();
+        let items: Vec<H256> = csv_to_h160_vec(csv)?
+            .iter()
+            .map(|h| H256::from(*h))
+            .collect();
 
         Ok(if items.is_empty() {
             Filter::Wildcard

@@ -11,7 +11,7 @@ pub struct PayArgs {
     #[arg()]
     pub message_id: H256,
 
-    /// Gas to pay on destination chain (will be converted according gas price and exchange rate)
+    /// Gas to pay on destination chain (will be converted according to gas price and exchange rate)
     #[arg(default_value = "10000")]
     pub gas: u32,
 }

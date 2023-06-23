@@ -8,6 +8,7 @@ use relayer::settings::matching_list::{Filter, MatchItem};
 
 use super::{LogItemMap, MailboxLog, MailboxLogType};
 
+/// Building in initiated through []
 pub async fn build_log<M: Middleware + 'static, F>(
     mailbox: &Mailbox<M>,
     event: Event<Arc<M>, M, F>,
@@ -33,6 +34,7 @@ struct MailboxLogBuilder<M, F> {
     map: Rc<LogItemMap>,
 }
 
+/// Builder for a MailboxLog
 impl<M: Middleware + 'static, F> MailboxLogBuilder<M, F> {
     pub fn new(mailbox: Mailbox<M>, event: Event<Arc<M>, M, F>, log_type: MailboxLogType) -> Self {
         let map = LogItemMap::new(log_type);
@@ -100,7 +102,6 @@ impl<M: Middleware + 'static, F> MailboxLogBuilder<M, F> {
     }
 
     pub async fn build(self) -> Result<MailboxLog> {
-        // println!("Event filter: {:#?}", self.event.filter);
         let logs = self.mailbox.client().get_logs(&self.event.filter).await?;
         Ok(MailboxLog {
             logs,
@@ -108,35 +109,3 @@ impl<M: Middleware + 'static, F> MailboxLogBuilder<M, F> {
         })
     }
 }
-
-// impl MailboxLog {
-//     fn new<M: Middleware, F>(
-//         mailbox_contract: Mailbox<M>,
-//         log_type: MailboxLogType,
-//         event: Event<Arc<M>, M, F>,
-//         match_element: ListElement,
-//     ) -> Self {
-//         let senders: Option<Vec<H256>> = match match_element.sender_address {
-//             matching_list::Filter::Wildcard => None,
-//             matching_list::Filter::Enumerated(list) => Some(list.into()),
-//         };
-
-//         let destinations: Option<Vec<H256>> = match match_element.destination_domain {
-//             matching_list::Filter::Wildcard => None,
-//             matching_list::Filter::Enumerated(list) => Some(list.into()),
-//         };
-
-//         let recipients = match match_element.recipient_address {
-//             matching_list::Filter::Wildcard => None,
-//             matching_list::Filter::Enumerated(list) => Some(list.into()),
-//         };
-
-//         Self { logs, log_type }
-//     }
-
-//     fn sender(&self) -> H160;
-//     fn recipient(&self) -> H160;
-//     fn destination_domain(&self) -> u32;
-//     fn block_number(&self) -> u64;
-//     fn log(&self) -> Log;
-// }
