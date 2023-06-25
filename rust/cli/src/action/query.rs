@@ -1,9 +1,14 @@
 use std::sync::Arc;
 
-use crate::{contracts::Mailbox, core, param::QueryParams, query::MailboxLogs};
+use crate::{
+    contracts::Mailbox,
+    core,
+    query::{MailboxLogItem, MailboxLogs},
+};
 use color_eyre::{eyre::Context, Result};
 use ethers::providers::Middleware;
 use hyperlane_core::H160;
+use relayer::settings::matching_list::MatchingList;
 
 /// Query for messages sent to a Hyperlane mailbox contract matching a provided filter.
 ///
@@ -13,12 +18,11 @@ pub async fn query<M: Middleware + 'static>(
     client: Arc<M>,
     chain_id: u32,
     mailbox_address: H160,
-    params: &QueryParams,
+    start_block: i32,
+    end_block: i32,
+    matching_list: MatchingList,
+    verbose: bool,
 ) -> Result<()> {
-    if params.debug {
-        println!("{params:#?}");
-        return Ok(());
-    }
     let mailbox = Arc::new(Mailbox::new(mailbox_address, Arc::clone(&client)));
 
     let block_number = client
@@ -26,43 +30,85 @@ pub async fn query<M: Middleware + 'static>(
         .await
         .context("Failed to retrieve block number")?
         .as_u64();
-    // println!("  Block: {block_number}");
 
     let end_block = std::cmp::min(
         block_number,
-        resolve_negative_block_number(block_number, params.end_block),
+        resolve_negative_block_number(block_number, end_block),
     );
     let start_block = std::cmp::min(
         end_block,
-        resolve_negative_block_number(block_number, params.start_block),
+        resolve_negative_block_number(block_number, start_block),
     );
+
+    println!("Querying logs from block {start_block} to {end_block}.");
 
     let logs = MailboxLogs::new(
         chain_id,
         mailbox.clone(),
-        params.criteria.clone(),
+        matching_list,
         start_block,
         end_block,
     )
     .await?;
 
     for log in &logs {
-        println!(
-            "{} in block {} to {} domain:",
-            log.event_type(),
-            core::option_into_display_string(&log.block_number()),
-            log.destination_domain()
-        );
-        println!(
-            "  Tx hash  : {}",
-            core::option_into_debug_string(&log.transaction_hash())
-        );
-        println!("  Sender   : {:?}", log.sender());
-        println!("  Recipient: {:?}", log.recipient());
+        print_log_item(log, verbose)?;
     }
 
     Ok(())
 }
+
+fn print_log_item(log: crate::query::MailboxLogItem<'_>, verbose: bool) -> Result<()> {
+    if verbose {
+        println!("{:#?}", log.log);
+    }
+
+    print_log_item_first_line(&log)?;
+    print_log_item_details(&log)
+}
+
+fn print_log_item_first_line(log: &MailboxLogItem<'_>) -> Result<()> {
+    print!(
+        "\n{} in block {}",
+        log.event_name(),
+        core::option_into_display_string(&log.block_number())
+    );
+    if let Some(domain) = log.destination_domain()? {
+        core::print_hyperlane_domain_details(" to", domain);
+    } else if let Some(domain) = log.origin_domain()? {
+        core::print_hyperlane_domain_details(" from", domain);
+    } else {
+        println!(":");
+    }
+
+    Ok(())
+}
+
+fn print_log_item_details(log: &MailboxLogItem<'_>) -> Result<()> {
+    println!(
+        "  Tx hash  : {}",
+        core::option_into_debug_string(&log.transaction_hash())
+    );
+    if let Some(sender) = log.sender()? {
+        println!("  Sender   : {:?}", sender);
+    }
+    if let Some(recipient) = log.recipient()? {
+        println!("  Recipient: {:?}", recipient);
+    }
+    if let Some(id) = log.message_id()? {
+        println!("  ID       : {:?}", id);
+    };
+
+    Ok(())
+}
+
+// fn extract_hyperlane_msg_from_dispatch_log(log: Log) -> Result<HyperlaneMessage> {
+//     let raw_log = RawLog::from(log);
+//     let event = DispatchFilter::decode_log(&raw_log)?;
+
+//     let raw_message: RawHyperlaneMessage = event.message.to_vec();
+//     Ok(raw_message.into())
+// }
 
 fn resolve_negative_block_number(current_blocknumber: u64, relative_blocknumber: i32) -> u64 {
     if relative_blocknumber < 0 {

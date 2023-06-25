@@ -1,26 +1,37 @@
 use std::{
     cmp::Ordering,
     fmt::{Debug, Formatter},
-    rc::Rc,
 };
 
-use ethers::types::Log;
-use hyperlane_core::{H160, H256};
+use crate::contracts::{
+    DispatchFilter, DispatchIdFilter, GasPaymentFilter, ProcessFilter, ProcessIdFilter,
+};
+use color_eyre::Result;
+use ethers::prelude::EthEvent;
+use ethers::{abi::RawLog, types::Log};
+use hyperlane_core::{HyperlaneMessage, RawHyperlaneMessage, H160, H256};
 
 use super::MailboxLogType;
 
 /// Dispatch and Process logs have different topic orders; this map is used to abstract that away.
 pub struct LogItemMap {
+    /// The type of log this map is for.
     pub event_type: MailboxLogType,
+
+    /// The index of the sender topic.
     pub sender_topic_idx: usize,
+
+    /// The index of the recipient topic.
     pub recipient_topic_idx: usize,
+
+    /// The index of the domain topic.
     pub domain_topic_idx: usize,
 }
 
 impl LogItemMap {
     /// Create a new map for the given log type.
     pub fn new(log_type: MailboxLogType) -> Self {
-        // TODO: Only need two of these (or per), and just return the correct one (in Rc or Arc).
+        // TODO: Only need two of these, and just return the correct one (in Rc or Arc).
         Self {
             event_type: log_type,
             sender_topic_idx: match log_type {
@@ -36,40 +47,153 @@ impl LogItemMap {
     }
 }
 
+/// Provides a wrapper around a log item, abstracting away the differences between log types.
 pub struct MailboxLogItem<'a> {
+    /// The underlying log item.
     pub log: &'a Log,
-    pub map: Rc<LogItemMap>,
+    // pub map: Rc<LogItemMap>,
 }
 
 impl MailboxLogItem<'_> {
-    pub fn event_type(&self) -> MailboxLogType {
-        self.map.event_type
+    // pub fn event_type(&self) -> MailboxLogType {
+    //     self.map.event_type
+    // }
+
+    /// Provides readable names for the different log types.
+    pub fn event_name(&self) -> String {
+        let signature = self.event_signature();
+
+        if signature == DispatchFilter::signature() {
+            "Dispatch".to_string()
+        } else if signature == DispatchIdFilter::signature() {
+            "Dispatch ID".to_string()
+        } else if signature == ProcessFilter::signature() {
+            "Process".to_string()
+        } else if signature == ProcessIdFilter::signature() {
+            "Process ID".to_string()
+        } else if signature == GasPaymentFilter::signature() {
+            "Gas Payment".to_string()
+        } else {
+            signature.to_string()
+        }
     }
 
-    pub fn sender(&self) -> H160 {
-        self.log.topics[self.map.sender_topic_idx].into()
+    /// Attempt to extract the [`DispatchFilter`] from this log item.
+    pub fn to_dispatch_event(&self) -> Result<Option<DispatchFilter>> {
+        self.to_event()
     }
 
-    pub fn recipient(&self) -> H160 {
-        self.log.topics[self.map.recipient_topic_idx].into()
+    /// Attempt to extract the [`DispatchIdFilter`] from this log item.
+    pub fn to_dispatch_id_event(&self) -> Result<Option<DispatchIdFilter>> {
+        self.to_event()
     }
 
-    pub fn destination_domain(&self) -> u64 {
-        self.log.topics[self.map.domain_topic_idx].to_low_u64_be()
+    /// Attempt to extract the [`ProcessFilter`] from this log item.
+    pub fn to_process_event(&self) -> Result<Option<ProcessFilter>> {
+        self.to_event()
     }
 
+    /// Attempt to extract the [`ProcessIdFilter`] from this log item.
+    pub fn to_process_id_event(&self) -> Result<Option<ProcessIdFilter>> {
+        self.to_event()
+    }
+
+    /// Attempt to extract the [`GasPaymentFilter`] from this log item.
+    pub fn to_gas_pay_event(&self) -> Result<Option<GasPaymentFilter>> {
+        self.to_event()
+    }
+
+    /// Get the signature of the event.
+    pub fn event_signature(&self) -> H256 {
+        self.log.topics[0]
+    }
+
+    /// Attempt to decode the event from the log item.
+    pub fn to_event<E: EthEvent>(&self) -> Result<Option<E>> {
+        Ok(if self.event_signature() == E::signature() {
+            let raw_log = RawLog::from(self.log.clone());
+            let event = E::decode_log(&raw_log)?;
+            Some(event)
+        } else {
+            None
+        })
+    }
+
+    /// Attempt to extract the sender from the log item. Not all log items have a sender.
+    pub fn sender(&self) -> Result<Option<H160>> {
+        Ok(if let Some(dispatch) = self.to_dispatch_event()? {
+            Some(dispatch.sender)
+        } else {
+            self.to_process_event()?
+                .map(|process| H160::from_slice(&process.sender.as_slice()[12..]))
+        })
+    }
+
+    /// Attempt to extract the recipient from the log item. Not all log items have a recipient.
+    pub fn recipient(&self) -> Result<Option<H160>> {
+        Ok(if let Some(dispatch) = self.to_dispatch_event()? {
+            Some(H160::from_slice(&dispatch.recipient[12..]))
+        } else {
+            self.to_process_event()?.map(|process| process.recipient)
+        })
+    }
+
+    /// Attempt to extract the destination domain from the log item.
+    /// Not all log items have a destination domain.
+    pub fn destination_domain(&self) -> Result<Option<u32>> {
+        Ok(if let Some(dispatch) = self.to_dispatch_event()? {
+            Some(dispatch.destination)
+        } else {
+            None
+        })
+    }
+
+    /// Attempt to extract the origin domain from the log item.
+    /// Not all log items have an origin domain.
+    pub fn origin_domain(&self) -> Result<Option<u32>> {
+        Ok(self.to_process_event()?.map(|process| process.origin))
+    }
+
+    /// Attempt to extract the [`HyperlaneMessage`] from the log item.
+    /// Not applicable for all log items.
+    pub fn hyperlane_message(&self) -> Result<Option<HyperlaneMessage>> {
+        Ok(if let Some(dispatch) = self.to_dispatch_event()? {
+            let raw_message: RawHyperlaneMessage = dispatch.message.to_vec();
+            Some(raw_message.into())
+        } else {
+            None
+        })
+    }
+
+    /// Attempt to extract the Hyperlane message id from the log item.
+    /// Not applicable for all log items.
+    pub fn message_id(&self) -> Result<Option<H256>> {
+        Ok(if let Some(message) = self.hyperlane_message()? {
+            Some(message.id())
+        } else if let Some(dispatch) = self.to_dispatch_id_event()? {
+            Some(H256::from_slice(&dispatch.message_id))
+        } else {
+            self.to_process_id_event()?
+                .map(|process| H256::from_slice(&process.message_id))
+        })
+    }
+
+    /// Block number of the log item.
     pub fn block_number(&self) -> Option<u64> {
         self.log.block_number.map(|index| index.as_u64())
     }
 
+    /// Transaction hash of the log item.
     pub fn transaction_hash(&self) -> Option<H256> {
         self.log.transaction_hash
     }
 
+    /// Log index of the log item.
     pub fn log_index(&self) -> Option<u64> {
         self.log.log_index.map(|index| index.as_u64())
     }
 
+    /// Data of the log item.
     pub fn data(&self) -> &[u8] {
         &self.log.data
     }
@@ -151,7 +275,7 @@ impl Debug for MailboxLogItem<'_> {
             .field("block_number", &self.block_number())
             .field("transaction_hash", &self.transaction_hash())
             .field("log_index", &self.log_index())
-            .field("data", &self.data())
+            .field("data", &hex::encode(self.data()))
             .finish()
     }
 }

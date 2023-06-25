@@ -1,4 +1,6 @@
-use crate::contracts::{MockHyperlaneEnvironment, MockMailbox, TestRecipient};
+//! Mock environment for testing, running an Anvil instance with (mock) Hyperlane contracts.
+
+use crate::contracts::{mock_mailbox::MockMailbox, MockHyperlaneEnvironment, TestRecipient};
 use color_eyre::Result;
 use ethers::{
     core::utils::Anvil,
@@ -19,19 +21,37 @@ pub struct MockEnvironment {
     // Not using this currently:
     // environment: MockHyperlaneEnvironment<SignerMiddleware<Provider<Http>, LocalWallet>>,
     provider: Provider<Http>,
+
+    /// Private key of the sender for use in signing transactions.
     pub sender_key: H256,
+
+    /// Hyperlane domain where the message is sent from.
     pub origin_domain: u32,
+
+    /// Hyperlane domain that the message is sent to.
     pub destination_domain: u32,
+
+    /// Contract gas paymaster address, used to pay for delivery gas of message.
     pub gas_pay_address: H160,
+
+    /// RPC URL of the chain to connect to.
     pub rpc_url: String,
+
+    /// Address of the mailbox contract.
     pub mailbox_address: H160,
+
+    /// Address of the recipient contract.
     pub recipient_address: H160,
 
+    /// Mock mailbox for the origin domain.
     pub origin_mbox_mock: MockMailbox<SignerMiddleware<Provider<Http>, LocalWallet>>,
+
+    /// Mock mailbox for the destination domain.
     pub destination_mbox_mock: MockMailbox<SignerMiddleware<Provider<Http>, LocalWallet>>,
 }
 
 impl MockEnvironment {
+    /// Create a new mock environment, using an Anvil instance.
     pub async fn new() -> Result<Self> {
         let anvil = Anvil::new().spawn();
         let sender_key: [u8; 32] = anvil.keys()[0].to_bytes().try_into()?;
@@ -79,12 +99,14 @@ impl MockEnvironment {
         })
     }
 
+    /// Get the current block number.
     pub async fn get_block_number(&self) -> Result<u64> {
         Ok(self.provider.get_block_number().await?.as_u64())
     }
 }
 
-async fn create_mock_environment_contract<M: Middleware + 'static>(
+/// Deploy a mock Hyperlane environment contract using the given client.
+pub async fn create_mock_environment_contract<M: Middleware + 'static>(
     client: Arc<M>,
     origin_domain: u32,
     destination_domain: u32,
@@ -96,7 +118,8 @@ async fn create_mock_environment_contract<M: Middleware + 'static>(
     Ok(environment)
 }
 
-async fn create_test_recipient_contract<M: Middleware + 'static>(
+/// Deploy a test recipient contract using the given client.
+pub async fn create_test_recipient_contract<M: Middleware + 'static>(
     client: Arc<M>,
 ) -> Result<TestRecipient<M>> {
     let contract = TestRecipient::deploy(client, ())?;
@@ -106,6 +129,7 @@ async fn create_test_recipient_contract<M: Middleware + 'static>(
     Ok(recipient)
 }
 
+/// Create a client with the given wallet and provider.
 fn create_client(
     wallet: LocalWallet,
     provider: Provider<Http>,

@@ -1,3 +1,5 @@
+//! Provider AnvilWrapper for an AnvilInstance that implements Debug.
+
 use ethers::utils::AnvilInstance;
 use std::{
     fmt::{self, Debug, Formatter},

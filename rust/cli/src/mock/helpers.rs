@@ -1,7 +1,10 @@
+//! Helper functions for testing with mock environments.
+
 use hyperlane_core::HyperlaneIdentifier;
 
 use super::environment::MockEnvironment;
 
+/// Used by tests to check state of the environment before a message has been dispatched.
 pub async fn check_intial_environment_state(
     env: &MockEnvironment,
 ) -> Result<u64, color_eyre::Report> {
@@ -19,6 +22,7 @@ pub async fn check_intial_environment_state(
     Ok(starting_block)
 }
 
+/// Used by tests to dispatch a message to the mailbox.
 pub async fn dispatch_message_to_mailbox(env: &MockEnvironment) -> Result<(), color_eyre::Report> {
     // Dummy payload that is easy to spot visually either hex encoded or as raw bytes.
     let mut message: ethers::abi::Bytes = hex::decode("DEADC0FFEEC0DE").unwrap();
@@ -40,6 +44,7 @@ pub async fn dispatch_message_to_mailbox(env: &MockEnvironment) -> Result<(), co
     Ok(())
 }
 
+/// Used by tests to check state of the environment after a message has been dispatched.
 pub async fn check_end_environment_state(
     env: &MockEnvironment,
     starting_block: u64,

@@ -105,7 +105,7 @@ impl<M: Middleware + 'static, F> MailboxLogBuilder<M, F> {
         let logs = self.mailbox.client().get_logs(&self.event.filter).await?;
         Ok(MailboxLog {
             logs,
-            map: Rc::clone(&self.map),
+            // map: Rc::clone(&self.map),
         })
     }
 }

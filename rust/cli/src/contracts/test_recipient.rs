@@ -7,16 +7,14 @@ pub use test_recipient::*;
     clippy::upper_case_acronyms,
     clippy::type_complexity,
     dead_code,
-    non_camel_case_types
+    non_camel_case_types,
 )]
 pub mod test_recipient {
     #[rustfmt::skip]
     const __ABI: &str = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\",\"components\":[],\"indexed\":true},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"OwnershipTransferred\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"caller\",\"type\":\"address\",\"components\":[],\"indexed\":true},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\",\"components\":[],\"indexed\":false},{\"internalType\":\"string\",\"name\":\"message\",\"type\":\"string\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"ReceivedCall\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"origin\",\"type\":\"uint32\",\"components\":[],\"indexed\":true},{\"internalType\":\"bytes32\",\"name\":\"sender\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true},{\"internalType\":\"string\",\"name\":\"message\",\"type\":\"string\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"ReceivedMessage\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\",\"components\":[]},{\"internalType\":\"string\",\"name\":\"message\",\"type\":\"string\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"fooBar\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_origin\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"bytes32\",\"name\":\"_sender\",\"type\":\"bytes32\",\"components\":[]},{\"internalType\":\"bytes\",\"name\":\"_data\",\"type\":\"bytes\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"handle\",\"outputs\":[]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"interchainSecurityModule\",\"outputs\":[{\"internalType\":\"contract IInterchainSecurityModule\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"lastCallMessage\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"lastCaller\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"lastData\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"lastSender\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"renounceOwnership\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_ism\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"setInterchainSecurityModule\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transferOwnership\",\"outputs\":[]}]";
     ///The parsed JSON ABI of the contract.
-    pub static TESTRECIPIENT_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> =
-        ::ethers::contract::Lazy::new(|| {
-            ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid")
-        });
+    pub static TESTRECIPIENT_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> = ::ethers::contract::Lazy::new(||
+    ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid"));
     #[rustfmt::skip]
     const __BYTECODE: &[u8] = &[
         96,
@@ -2662,8 +2660,9 @@ pub mod test_recipient {
         51,
     ];
     ///The bytecode of the contract.
-    pub static TESTRECIPIENT_BYTECODE: ::ethers::core::types::Bytes =
-        ::ethers::core::types::Bytes::from_static(__BYTECODE);
+    pub static TESTRECIPIENT_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
+        __BYTECODE,
+    );
     #[rustfmt::skip]
     const __DEPLOYED_BYTECODE: &[u8] = &[
         96,
@@ -5183,8 +5182,9 @@ pub mod test_recipient {
         51,
     ];
     ///The deployed bytecode of the contract.
-    pub static TESTRECIPIENT_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes =
-        ::ethers::core::types::Bytes::from_static(__DEPLOYED_BYTECODE);
+    pub static TESTRECIPIENT_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
+        __DEPLOYED_BYTECODE,
+    );
     pub struct TestRecipient<M>(::ethers::contract::Contract<M>);
     impl<M> ::core::clone::Clone for TestRecipient<M> {
         fn clone(&self) -> Self {
@@ -5204,9 +5204,7 @@ pub mod test_recipient {
     }
     impl<M> ::core::fmt::Debug for TestRecipient<M> {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-            f.debug_tuple(stringify!(TestRecipient))
-                .field(&self.address())
-                .finish()
+            f.debug_tuple(stringify!(TestRecipient)).field(&self.address()).finish()
         }
     }
     impl<M: ::ethers::providers::Middleware> TestRecipient<M> {
@@ -5216,11 +5214,13 @@ pub mod test_recipient {
             address: T,
             client: ::std::sync::Arc<M>,
         ) -> Self {
-            Self(::ethers::contract::Contract::new(
-                address.into(),
-                TESTRECIPIENT_ABI.clone(),
-                client,
-            ))
+            Self(
+                ::ethers::contract::Contract::new(
+                    address.into(),
+                    TESTRECIPIENT_ABI.clone(),
+                    client,
+                ),
+            )
         }
         /// Constructs the general purpose `Deployer` instance based on the provided constructor arguments and sends it.
         /// Returns a new instance of a deployer that returns an instance of this contract after sending the transaction
@@ -5285,7 +5285,10 @@ pub mod test_recipient {
         ///Calls the contract's `interchainSecurityModule` (0xde523cf3) function
         pub fn interchain_security_module(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
+        ) -> ::ethers::contract::builders::ContractCall<
+            M,
+            ::ethers::core::types::Address,
+        > {
             self.0
                 .method_hash([222, 82, 60, 243], ())
                 .expect("method not found (this should never happen)")
@@ -5301,7 +5304,10 @@ pub mod test_recipient {
         ///Calls the contract's `lastCaller` (0x2113522a) function
         pub fn last_caller(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
+        ) -> ::ethers::contract::builders::ContractCall<
+            M,
+            ::ethers::core::types::Address,
+        > {
             self.0
                 .method_hash([33, 19, 82, 42], ())
                 .expect("method not found (this should never happen)")
@@ -5309,13 +5315,18 @@ pub mod test_recipient {
         ///Calls the contract's `lastData` (0x006e75ec) function
         pub fn last_data(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Bytes> {
+        ) -> ::ethers::contract::builders::ContractCall<
+            M,
+            ::ethers::core::types::Bytes,
+        > {
             self.0
                 .method_hash([0, 110, 117, 236], ())
                 .expect("method not found (this should never happen)")
         }
         ///Calls the contract's `lastSender` (0x256fec88) function
-        pub fn last_sender(&self) -> ::ethers::contract::builders::ContractCall<M, [u8; 32]> {
+        pub fn last_sender(
+            &self,
+        ) -> ::ethers::contract::builders::ContractCall<M, [u8; 32]> {
             self.0
                 .method_hash([37, 111, 236, 136], ())
                 .expect("method not found (this should never happen)")
@@ -5323,13 +5334,18 @@ pub mod test_recipient {
         ///Calls the contract's `owner` (0x8da5cb5b) function
         pub fn owner(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
+        ) -> ::ethers::contract::builders::ContractCall<
+            M,
+            ::ethers::core::types::Address,
+        > {
             self.0
                 .method_hash([141, 165, 203, 91], ())
                 .expect("method not found (this should never happen)")
         }
         ///Calls the contract's `renounceOwnership` (0x715018a6) function
-        pub fn renounce_ownership(&self) -> ::ethers::contract::builders::ContractCall<M, ()> {
+        pub fn renounce_ownership(
+            &self,
+        ) -> ::ethers::contract::builders::ContractCall<M, ()> {
             self.0
                 .method_hash([113, 80, 24, 166], ())
                 .expect("method not found (this should never happen)")
@@ -5355,36 +5371,46 @@ pub mod test_recipient {
         ///Gets the contract's `OwnershipTransferred` event
         pub fn ownership_transferred_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, OwnershipTransferredFilter>
-        {
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            OwnershipTransferredFilter,
+        > {
             self.0.event()
         }
         ///Gets the contract's `ReceivedCall` event
         pub fn received_call_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, ReceivedCallFilter>
-        {
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            ReceivedCallFilter,
+        > {
             self.0.event()
         }
         ///Gets the contract's `ReceivedMessage` event
         pub fn received_message_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, ReceivedMessageFilter>
-        {
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            ReceivedMessageFilter,
+        > {
             self.0.event()
         }
         /// Returns an `Event` builder for all the events of this contract.
         pub fn events(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, TestRecipientEvents>
-        {
-            self.0
-                .event_with_filter(::core::default::Default::default())
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            TestRecipientEvents,
+        > {
+            self.0.event_with_filter(::core::default::Default::default())
         }
     }
     impl<M: ::ethers::providers::Middleware> From<::ethers::contract::Contract<M>>
-        for TestRecipient<M>
-    {
+    for TestRecipient<M> {
         fn from(contract: ::ethers::contract::Contract<M>) -> Self {
             Self::new(contract.address(), contract.client())
         }
@@ -5397,7 +5423,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethevent(
         name = "OwnershipTransferred",
@@ -5417,7 +5443,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethevent(name = "ReceivedCall", abi = "ReceivedCall(address,uint256,string)")]
     pub struct ReceivedCallFilter {
@@ -5434,12 +5460,9 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
-    #[ethevent(
-        name = "ReceivedMessage",
-        abi = "ReceivedMessage(uint32,bytes32,string)"
-    )]
+    #[ethevent(name = "ReceivedMessage", abi = "ReceivedMessage(uint32,bytes32,string)")]
     pub struct ReceivedMessageFilter {
         #[ethevent(indexed)]
         pub origin: u32,
@@ -5473,9 +5496,15 @@ pub mod test_recipient {
     impl ::core::fmt::Display for TestRecipientEvents {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
             match self {
-                Self::OwnershipTransferredFilter(element) => ::core::fmt::Display::fmt(element, f),
-                Self::ReceivedCallFilter(element) => ::core::fmt::Display::fmt(element, f),
-                Self::ReceivedMessageFilter(element) => ::core::fmt::Display::fmt(element, f),
+                Self::OwnershipTransferredFilter(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
+                Self::ReceivedCallFilter(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
+                Self::ReceivedMessageFilter(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
             }
         }
     }
@@ -5503,7 +5532,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "fooBar", abi = "fooBar(uint256,string)")]
     pub struct FooBarCall {
@@ -5519,7 +5548,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "handle", abi = "handle(uint32,bytes32,bytes)")]
     pub struct HandleCall {
@@ -5536,7 +5565,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "interchainSecurityModule", abi = "interchainSecurityModule()")]
     pub struct InterchainSecurityModuleCall;
@@ -5549,7 +5578,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "lastCallMessage", abi = "lastCallMessage()")]
     pub struct LastCallMessageCall;
@@ -5562,7 +5591,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "lastCaller", abi = "lastCaller()")]
     pub struct LastCallerCall;
@@ -5575,7 +5604,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "lastData", abi = "lastData()")]
     pub struct LastDataCall;
@@ -5588,7 +5617,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "lastSender", abi = "lastSender()")]
     pub struct LastSenderCall;
@@ -5601,7 +5630,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "owner", abi = "owner()")]
     pub struct OwnerCall;
@@ -5614,7 +5643,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "renounceOwnership", abi = "renounceOwnership()")]
     pub struct RenounceOwnershipCall;
@@ -5627,7 +5656,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(
         name = "setInterchainSecurityModule",
@@ -5645,7 +5674,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "transferOwnership", abi = "transferOwnership(address)")]
     pub struct TransferOwnershipCall {
@@ -5671,47 +5700,56 @@ pub mod test_recipient {
             data: impl AsRef<[u8]>,
         ) -> ::core::result::Result<Self, ::ethers::core::abi::AbiError> {
             let data = data.as_ref();
-            if let Ok(decoded) = <FooBarCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <FooBarCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::FooBar(decoded));
             }
-            if let Ok(decoded) = <HandleCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <HandleCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Handle(decoded));
             }
-            if let Ok(decoded) =
-                <InterchainSecurityModuleCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <InterchainSecurityModuleCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::InterchainSecurityModule(decoded));
             }
-            if let Ok(decoded) =
-                <LastCallMessageCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <LastCallMessageCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::LastCallMessage(decoded));
             }
-            if let Ok(decoded) = <LastCallerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <LastCallerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::LastCaller(decoded));
             }
-            if let Ok(decoded) = <LastDataCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <LastDataCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::LastData(decoded));
             }
-            if let Ok(decoded) = <LastSenderCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <LastSenderCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::LastSender(decoded));
             }
-            if let Ok(decoded) = <OwnerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <OwnerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Owner(decoded));
             }
-            if let Ok(decoded) =
-                <RenounceOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <RenounceOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::RenounceOwnership(decoded));
             }
-            if let Ok(decoded) =
-                <SetInterchainSecurityModuleCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <SetInterchainSecurityModuleCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::SetInterchainSecurityModule(decoded));
             }
-            if let Ok(decoded) =
-                <TransferOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <TransferOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::TransferOwnership(decoded));
             }
             Err(::ethers::core::abi::Error::InvalidData.into())
@@ -5725,16 +5763,28 @@ pub mod test_recipient {
                 Self::InterchainSecurityModule(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
-                Self::LastCallMessage(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::LastCaller(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::LastData(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::LastSender(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::LastCallMessage(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::LastCaller(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::LastData(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::LastSender(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
                 Self::Owner(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::RenounceOwnership(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::RenounceOwnership(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
                 Self::SetInterchainSecurityModule(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
-                Self::TransferOwnership(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::TransferOwnership(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
             }
         }
     }
@@ -5743,14 +5793,18 @@ pub mod test_recipient {
             match self {
                 Self::FooBar(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Handle(element) => ::core::fmt::Display::fmt(element, f),
-                Self::InterchainSecurityModule(element) => ::core::fmt::Display::fmt(element, f),
+                Self::InterchainSecurityModule(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
                 Self::LastCallMessage(element) => ::core::fmt::Display::fmt(element, f),
                 Self::LastCaller(element) => ::core::fmt::Display::fmt(element, f),
                 Self::LastData(element) => ::core::fmt::Display::fmt(element, f),
                 Self::LastSender(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Owner(element) => ::core::fmt::Display::fmt(element, f),
                 Self::RenounceOwnership(element) => ::core::fmt::Display::fmt(element, f),
-                Self::SetInterchainSecurityModule(element) => ::core::fmt::Display::fmt(element, f),
+                Self::SetInterchainSecurityModule(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
                 Self::TransferOwnership(element) => ::core::fmt::Display::fmt(element, f),
             }
         }
@@ -5819,7 +5873,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct InterchainSecurityModuleReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `lastCallMessage` function with signature `lastCallMessage()` and selector `0xa4982fde`
@@ -5831,7 +5885,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct LastCallMessageReturn(pub ::std::string::String);
     ///Container type for all return fields from the `lastCaller` function with signature `lastCaller()` and selector `0x2113522a`
@@ -5843,7 +5897,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct LastCallerReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `lastData` function with signature `lastData()` and selector `0x006e75ec`
@@ -5855,7 +5909,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct LastDataReturn(pub ::ethers::core::types::Bytes);
     ///Container type for all return fields from the `lastSender` function with signature `lastSender()` and selector `0x256fec88`
@@ -5867,7 +5921,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct LastSenderReturn(pub [u8; 32]);
     ///Container type for all return fields from the `owner` function with signature `owner()` and selector `0x8da5cb5b`
@@ -5879,7 +5933,7 @@ pub mod test_recipient {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct OwnerReturn(pub ::ethers::core::types::Address);
 }

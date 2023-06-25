@@ -17,8 +17,7 @@ pub use mailbox::*;
 mod mock_hyperlane_environment;
 pub use mock_hyperlane_environment::*;
 
-mod mock_mailbox;
-pub use mock_mailbox::*;
+pub mod mock_mailbox;
 
 mod test_recipient;
 pub use test_recipient::*;

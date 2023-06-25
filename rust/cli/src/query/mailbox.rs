@@ -1,24 +1,26 @@
-use std::rc::Rc;
-
+use super::MailboxLogItem;
 use ethers::types::Log;
-
-use super::{LogItemMap, MailboxLogItem};
 
 /// Two types of events to query, Dispatch and Process.
 #[derive(strum::Display, Copy, Clone, Debug, PartialEq, Eq)]
 pub enum MailboxLogType {
+    /// Dispatch events, associated with [`crate::contracts::DispatchFilter`].
     Dispatch,
+    /// Process events, associated with [`crate::contracts::ProcessFilter`].
     Process,
 }
 
+/// Wrapper around a vector of logs, abstracting away the differences between log types.
 pub struct MailboxLog {
+    /// The underlying logs.
     pub logs: Vec<Log>,
-    pub map: Rc<LogItemMap>,
+    // pub map: Rc<LogItemMap>,
 }
 
+/// Iterator over the logs in a [`MailboxLog`].
 pub struct MailboxLogIter<'a> {
     inner: std::slice::Iter<'a, Log>,
-    map: Rc<LogItemMap>,
+    // map: Rc<LogItemMap>,
 }
 
 impl<'a> Iterator for MailboxLogIter<'a> {
@@ -27,7 +29,7 @@ impl<'a> Iterator for MailboxLogIter<'a> {
     fn next(&mut self) -> Option<Self::Item> {
         self.inner.next().map(|item| MailboxLogItem {
             log: item,
-            map: Rc::clone(&self.map),
+            // map: Rc::clone(&self.map),
         })
     }
 }
@@ -42,10 +44,11 @@ impl<'a> IntoIterator for &'a MailboxLog {
 }
 
 impl MailboxLog {
+    /// Provide iterator over the logs in this [`MailboxLog`].
     pub fn iter(&self) -> MailboxLogIter {
         MailboxLogIter {
             inner: self.logs.iter(),
-            map: Rc::clone(&self.map),
+            // map: Rc::clone(&self.map),
         }
     }
 }

@@ -1,15 +1,12 @@
-// Shared code to be moved to apppropriate modules.
+//! Core utilities for CLI implementation.
 
 use color_eyre::{eyre::Context, Result};
 use ethers::prelude::k256::ecdsa::SigningKey;
+use ethers::providers::{Http, Middleware, Provider};
 use ethers::signers::Wallet;
 use ethers::{
     prelude::SignerMiddleware,
     signers::{LocalWallet, Signer},
-};
-use ethers::{
-    providers::{Http, Middleware, Provider},
-    types::Address,
 };
 use hyperlane_core::H256;
 use hyperlane_core::{
@@ -17,6 +14,7 @@ use hyperlane_core::{
 };
 use std::sync::Arc;
 
+/// Get the Hyperlane domain for a given chain ID.
 pub fn get_hyperlane_domain(chain_id: u32) -> HyperlaneDomain {
     match KnownHyperlaneDomain::try_from(chain_id) {
         Ok(domain) => HyperlaneDomain::Known(domain),
@@ -29,38 +27,7 @@ pub fn get_hyperlane_domain(chain_id: u32) -> HyperlaneDomain {
     }
 }
 
-pub async fn show_block_number(
-    provider: &Provider<Http>,
-    endpoint: &str,
-) -> Result<(), color_eyre::Report> {
-    let block_number = provider
-        .get_block_number()
-        .await
-        .with_context(|| format!("Failed to retrieve block number from {endpoint}"))?
-        .as_u64();
-    println!("Block: {block_number}");
-    Ok(())
-}
-
-pub async fn show_balances(
-    provider: &Provider<Http>,
-    sender_address: Address,
-    recipient_address: Address,
-    stage: Option<&str>,
-) -> Result<()> {
-    let sender_balance = provider.get_balance(sender_address, None).await?;
-    let recipient_balance = provider.get_balance(recipient_address, None).await?;
-
-    if let Some(stage) = stage {
-        println!("{stage} transaction:");
-    }
-    println!(
-        "  Sender balance   : {sender_balance:?}\n  Recipient balance: {recipient_balance:?}\n"
-    );
-
-    Ok(())
-}
-
+/// Get the chain client.
 pub fn get_client<S: Signer>(
     provider: Arc<Provider<Http>>,
     sender_wallet: S,
@@ -68,6 +35,7 @@ pub fn get_client<S: Signer>(
     Arc::new(SignerMiddleware::new(provider, sender_wallet))
 }
 
+/// Get a wallet from a private key for signing transactions.
 pub fn get_wallet(key: H256, chain_id: u32) -> Result<Wallet<SigningKey>> {
     let sender_wallet = LocalWallet::from_bytes(key.as_bytes())
         .context("Failed to create wallet from private key")?
@@ -75,7 +43,8 @@ pub fn get_wallet(key: H256, chain_id: u32) -> Result<Wallet<SigningKey>> {
     Ok(sender_wallet)
 }
 
-pub fn show_hyperlane_domain(chain_id: u32) {
+/// Print the Hyperlane domain for a given chain ID in a human-readable format.
+pub fn print_hyperlane_domain(chain_id: u32) {
     let domain = get_hyperlane_domain(chain_id);
     println!(
         "\nHyperlane domain: {:?}, {:?} ({}: {})",
@@ -86,6 +55,7 @@ pub fn show_hyperlane_domain(chain_id: u32) {
     );
 }
 
+/// Get the chain provider given the RPC URL, printing summary information.
 pub async fn get_provider(
     rpc_url: String,
 ) -> Result<(Arc<Provider<Http>>, u32), color_eyre::Report> {
@@ -95,25 +65,19 @@ pub async fn get_provider(
             .with_context(|| format!("Failed to create provider for {rpc_url}"))?,
     );
 
-    // let block_number = provider
-    //     .get_block_number()
-    //     .await
-    //     .with_context(|| format!("Failed to retrieve block number from {rpc_url}"))?
-    //     .as_u64();
-    // println!("  Block: {block_number}");
-
     let chain_id = provider
         .get_chainid()
         .await
         .with_context(|| format!("Failed to retrieve chain id for {rpc_url}"))?
         .as_u32();
 
-    show_connected_hyperlane_domain_details(chain_id);
+    print_hyperlane_domain_details("Origin", chain_id);
 
     Ok((provider, chain_id))
 }
 
-fn show_connected_hyperlane_domain_details(chain_id: u32) {
+/// Print the Hyperlane domain for a given chain ID in a human-readable format.
+pub fn print_hyperlane_domain_details(context: &str, chain_id: u32) {
     let domain = get_hyperlane_domain(chain_id);
     let domain_name = match &domain {
         HyperlaneDomain::Known(domain) => format!("{domain:?}"),
@@ -121,7 +85,8 @@ fn show_connected_hyperlane_domain_details(chain_id: u32) {
     };
 
     println!(
-        "Connected, chain identified as: {} {} {:?} {:?}",
+        "{}: {} {} {:?} {:?}",
+        context,
         chain_id,
         domain_name,
         domain.domain_protocol(),
@@ -129,6 +94,7 @@ fn show_connected_hyperlane_domain_details(chain_id: u32) {
     );
 }
 
+/// Format an Option\<T\> into either display format of T or "None".
 pub fn option_into_display_string<T: std::fmt::Display>(opt: &Option<T>) -> String {
     match opt {
         Some(value) => format!("{}", value),
@@ -136,6 +102,7 @@ pub fn option_into_display_string<T: std::fmt::Display>(opt: &Option<T>) -> Stri
     }
 }
 
+/// Format an Option\<T\> into debug format of T or "None".
 pub fn option_into_debug_string<T: std::fmt::Debug>(opt: &Option<T>) -> String {
     match opt {
         Some(value) => format!("{:?}", value),

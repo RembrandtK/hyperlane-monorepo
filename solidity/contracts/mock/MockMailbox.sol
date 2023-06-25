@@ -12,13 +12,33 @@ contract MockMailbox is Versioned {
     // Domain of chain on which the contract is deployed
 
     // ============ Events ============
+    // These events are as defined in the IMailbox interface
+
+    /**
+     * @notice Emitted when a new message is dispatched via Hyperlane
+     * @param sender The address that dispatched the message
+     * @param destination The destination domain of the message
+     * @param recipient The message recipient address on `destination`
+     * @param message Raw bytes of message
+     */
     event Dispatch(
         address indexed sender,
-        uint32 indexed destinationDomain,
-        bytes32 indexed recipientAddress,
-        bytes messageBody
+        uint32 indexed destination,
+        bytes32 indexed recipient,
+        bytes message
     );
 
+    /**
+     * @notice Emitted when a new message is dispatched via Hyperlane
+     * @param messageId The unique message identifier
+     */
+    event DispatchId(bytes32 indexed messageId);
+
+    /**
+     * @notice Emitted when a Hyperlane message is processed
+     * @param messageId The unique message identifier
+     */
+    event ProcessId(bytes32 indexed messageId);
     // ============ Constants ============
     uint32 public immutable localDomain;
     uint256 public constant MAX_MESSAGE_BODY_BYTES = 2 * 2**10;
@@ -77,8 +97,11 @@ contract MockMailbox is Versioned {
         );
 
         outboundNonce++;
-        uint256 id = outboundNonce - 1;
-        return bytes32(id);
+
+        uint256 _id_as_uint = outboundNonce;
+        bytes32 _id = bytes32(_id_as_uint);
+        emit DispatchId(_id);
+        return _id;
     }
 
     function addInboundMessage(

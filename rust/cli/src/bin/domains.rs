@@ -1,6 +1,7 @@
 //! List all known Hyperlane domains.
 
 #![forbid(unsafe_code)]
+#![warn(missing_docs)]
 
 use hyperlane_core::KnownHyperlaneDomain;
 use itertools::Itertools;

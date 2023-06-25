@@ -44,7 +44,7 @@ pub async fn pay<M: Middleware + 'static>(
     match tx_receipt {
         Some(receipt) => {
             println!(
-                "Transaction completed in block {}, hash: {:?}",
+                "Pay in block {}, hash: {:?}",
                 core::option_into_display_string(&receipt.block_number),
                 receipt.transaction_hash
             );

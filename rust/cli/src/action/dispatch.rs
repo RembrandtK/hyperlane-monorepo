@@ -1,8 +1,9 @@
 use std::sync::Arc;
 
-use crate::contracts::Mailbox;
+use crate::contracts::{DispatchIdFilter, Mailbox};
 use crate::core;
 use color_eyre::Result;
+use ethers::contract::EthEvent;
 use ethers::{providers::Middleware, types::Bytes};
 use hyperlane_core::{H160, H256};
 
@@ -14,7 +15,7 @@ pub async fn dispatch<M: Middleware + 'static>(
     recipient_address: H160,
     message_body: Vec<u8>,
     verbose: bool,
-) -> Result<()> {
+) -> Result<Option<H256>> {
     let mailbox = Mailbox::new(mailbox_address, Arc::clone(&client));
 
     let recipient_address: H256 = recipient_address.into();
@@ -29,22 +30,29 @@ pub async fn dispatch<M: Middleware + 'static>(
         println!("Transaction receipt: {:#?}", tx_receipt);
     };
 
-    match tx_receipt {
+    Ok(match tx_receipt {
         Some(receipt) => {
             println!(
-                "Transaction completed in block {}, hash: {:?}",
+                "Dispatch in block {}, tx hash: {:?}",
                 core::option_into_display_string(&receipt.block_number),
                 receipt.transaction_hash
             );
 
-            // TODO: ID lookup path coincidentally works for now, but this is not a reliable way to get the message ID.
-            // Should be based on iterating through logs and matching topics[0] to event signature.
-            // And it has broken the unit test that use a mock environment.
-            let id = receipt.logs[1].topics[1];
-            println!("  Message ID: {:?}", id);
-        }
-        None => println!("Transaction status unknown"),
-    }
+            let id = receipt
+                .logs
+                .iter()
+                .find(|log| log.topics[0] == DispatchIdFilter::signature())
+                .map(|log| log.topics[1]);
 
-    Ok(())
+            if let Some(id) = id {
+                println!("  Message ID: {:?}", id);
+            }
+
+            id
+        }
+        None => {
+            println!("Transaction status unknown");
+            None
+        }
+    })
 }

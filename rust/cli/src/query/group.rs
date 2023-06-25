@@ -7,14 +7,17 @@ use relayer::settings::MatchingList;
 
 use super::{build_log, MailboxLog, MailboxLogItem, MailboxLogIter, MailboxLogType};
 
+/// Holds a vector of [`MailboxLog`]s and provides an iterator over all logs in order.
 pub struct MailboxLogs {
     logs: Vec<MailboxLog>,
 }
 
+/// Iterator over all logs in the mailbox logs, returning items in order with duplicates removed.
 pub struct MailboxLogsIter<'a> {
     iters: Vec<Peekable<MailboxLogIter<'a>>>,
 }
 
+/// Iterator over all logs in the mailbox logs, returning items in order with duplicates removed.
 impl<'a> MailboxLogsIter<'a> {
     fn new(logs: &'a [MailboxLog]) -> Self {
         let iters = logs.iter().map(|log| log.into_iter().peekable()).collect();
@@ -72,7 +75,9 @@ impl<'a> IntoIterator for &'a MailboxLogs {
     }
 }
 
+/// Holds a vector of [`MailboxLog`]s and provides an iterator over all logs in order.
 impl MailboxLogs {
+    /// Creates a new mailbox logs for the given mailbox, constructing queries based on the [`MatchingList`].
     pub async fn new<M: Middleware + 'static>(
         chain_id: u32,
         mailbox: Arc<Mailbox<M>>,
