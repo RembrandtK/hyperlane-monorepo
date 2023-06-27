@@ -34,6 +34,7 @@ Options:
       --confirm <CONFIRM>          Number of confirmation blocks to wait for [default: 1]
   -m, --message-id <MESSAGE_ID>    Id of message to pay for
       --gas <GAS>                  Gas to pay on destination chain [default: 100000]
+  -q, --query-file <QUERY_FILE>    Read query criteria from file, with either JSON or CSV format criteria
   -s, --start-block <START_BLOCK>  Start block number to search from [default: -1000]
   -e, --end-block <END_BLOCK>      End block number to search to [default: -1]
       --debug                      Do not run; print extracted parameters and exit
@@ -114,6 +115,11 @@ Options:
           Will be converted according to gas price and exchange rate
 
           [default: 100000]
+
+  -q, --query-file <QUERY_FILE>
+          Read query criteria from file, with either JSON or CSV format criteria
+
+          For CSV, can specify multiple criteria separated by whitespace (e.g. one per line)
 
   -s, --start-block <START_BLOCK>
           Start block number to search from.
@@ -476,7 +482,7 @@ Notice that the last log entry is not a Dispatch but a Process. The query comman
 
 The last Process item was relayed from the Mumbai mailbox to the Sepolia mailbox. Hyperlane in action! Note that relaying speed is variable, and you might have to wait for the message to appear.
 
-I suggest exploring the CLI options using --help.
+I suggest exploring the CLI options using `--help`.
 
 There are obvious ways to enhance the tool that I did not have time for:
 

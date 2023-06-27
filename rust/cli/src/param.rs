@@ -96,7 +96,7 @@ impl TryFrom<CliArgs> for Params {
     }
 }
 
-fn read_payload(hex_str: &Option<String>, file: &Option<PathBuf>) -> Result<Vec<u8>, Report> {
+fn read_payload(hex_str: &Option<String>, file: &Option<PathBuf>) -> Result<Vec<u8>> {
     if file.is_some() == hex_str.is_some() {
         return Err(eyre!("Specify exactly one of --payload and --file"));
     }
@@ -116,10 +116,21 @@ fn read_payload(hex_str: &Option<String>, file: &Option<PathBuf>) -> Result<Vec<
 }
 
 fn matching_list_from_args(args: &CliArgs) -> Result<MatchingList> {
-    // TODO: Add loading matching criteria from file.
-    let criteria = &args.query;
+    let mut criteria: Vec<String> = args.query.clone();
 
-    matching_list_from_criteria(criteria)
+    if let Some(file) = &args.query_file {
+        let file_criteria = std::fs::read_to_string(file).with_context(|| {
+            format!(
+                "Failed to read query criteria from '{}'",
+                file.to_string_lossy()
+            )
+        })?;
+
+        // Add it to criteria Vec and let matching_list_from_criteria handle it.
+        criteria.push(file_criteria);
+    }
+
+    matching_list_from_criteria(&criteria)
 }
 
 /// Create [`MatchingList`] from a vector criteria specification strings.
@@ -140,7 +151,10 @@ pub fn matching_list_from_criteria(criteria: &Vec<String>) -> Result<MatchingLis
             matching_list.push(serde_json::from_str(criteria)?);
         } else {
             // CSV (semicolon separated CSV parts) individual matching criteria
-            matching_list.push(MatchItem::from_csv(criteria)?);
+            // Split by whitespace to allow multiple CSV criteria in a single string, particularly when read from a file.
+            for csv in criteria.split_whitespace() {
+                matching_list.push(MatchItem::from_csv(csv)?);
+            }
         }
     }
 

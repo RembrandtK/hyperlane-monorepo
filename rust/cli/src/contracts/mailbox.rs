@@ -7,14 +7,16 @@ pub use mailbox::*;
     clippy::upper_case_acronyms,
     clippy::type_complexity,
     dead_code,
-    non_camel_case_types,
+    non_camel_case_types
 )]
 pub mod mailbox {
     #[rustfmt::skip]
     const __ABI: &str = "[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_localDomain\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"module\",\"type\":\"address\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"DefaultIsmSet\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\",\"components\":[],\"indexed\":true},{\"internalType\":\"uint32\",\"name\":\"destination\",\"type\":\"uint32\",\"components\":[],\"indexed\":true},{\"internalType\":\"bytes32\",\"name\":\"recipient\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true},{\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"Dispatch\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"DispatchId\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"Initialized\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\",\"components\":[],\"indexed\":true},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"OwnershipTransferred\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[],\"type\":\"event\",\"name\":\"Paused\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"origin\",\"type\":\"uint32\",\"components\":[],\"indexed\":true},{\"internalType\":\"bytes32\",\"name\":\"sender\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"Process\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"ProcessId\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[],\"type\":\"event\",\"name\":\"Unpaused\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"MAX_MESSAGE_BODY_BYTES\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"VERSION\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"count\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"defaultIsm\",\"outputs\":[{\"internalType\":\"contract IInterchainSecurityModule\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"delivered\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"bytes32\",\"name\":\"_recipientAddress\",\"type\":\"bytes32\",\"components\":[]},{\"internalType\":\"bytes\",\"name\":\"_messageBody\",\"type\":\"bytes\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"dispatch\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"_defaultIsm\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"initialize\",\"outputs\":[]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"isPaused\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"latestCheckpoint\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\",\"components\":[]},{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"localDomain\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"pause\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"_metadata\",\"type\":\"bytes\",\"components\":[]},{\"internalType\":\"bytes\",\"name\":\"_message\",\"type\":\"bytes\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"process\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"recipientIsm\",\"outputs\":[{\"internalType\":\"contract IInterchainSecurityModule\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"renounceOwnership\",\"outputs\":[]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"root\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_module\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"setDefaultIsm\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transferOwnership\",\"outputs\":[]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"tree\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"unpause\",\"outputs\":[]}]";
     ///The parsed JSON ABI of the contract.
-    pub static MAILBOX_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> = ::ethers::contract::Lazy::new(||
-    ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid"));
+    pub static MAILBOX_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> =
+        ::ethers::contract::Lazy::new(|| {
+            ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid")
+        });
     #[rustfmt::skip]
     const __BYTECODE: &[u8] = &[
         96,
@@ -8764,9 +8766,8 @@ pub mod mailbox {
         51,
     ];
     ///The bytecode of the contract.
-    pub static MAILBOX_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
-        __BYTECODE,
-    );
+    pub static MAILBOX_BYTECODE: ::ethers::core::types::Bytes =
+        ::ethers::core::types::Bytes::from_static(__BYTECODE);
     #[rustfmt::skip]
     const __DEPLOYED_BYTECODE: &[u8] = &[
         96,
@@ -17366,9 +17367,8 @@ pub mod mailbox {
         51,
     ];
     ///The deployed bytecode of the contract.
-    pub static MAILBOX_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
-        __DEPLOYED_BYTECODE,
-    );
+    pub static MAILBOX_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes =
+        ::ethers::core::types::Bytes::from_static(__DEPLOYED_BYTECODE);
     pub struct Mailbox<M>(::ethers::contract::Contract<M>);
     impl<M> ::core::clone::Clone for Mailbox<M> {
         fn clone(&self) -> Self {
@@ -17388,7 +17388,9 @@ pub mod mailbox {
     }
     impl<M> ::core::fmt::Debug for Mailbox<M> {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-            f.debug_tuple(stringify!(Mailbox)).field(&self.address()).finish()
+            f.debug_tuple(stringify!(Mailbox))
+                .field(&self.address())
+                .finish()
         }
     }
     impl<M: ::ethers::providers::Middleware> Mailbox<M> {
@@ -17398,13 +17400,11 @@ pub mod mailbox {
             address: T,
             client: ::std::sync::Arc<M>,
         ) -> Self {
-            Self(
-                ::ethers::contract::Contract::new(
-                    address.into(),
-                    MAILBOX_ABI.clone(),
-                    client,
-                ),
-            )
+            Self(::ethers::contract::Contract::new(
+                address.into(),
+                MAILBOX_ABI.clone(),
+                client,
+            ))
         }
         /// Constructs the general purpose `Deployer` instance based on the provided constructor arguments and sends it.
         /// Returns a new instance of a deployer that returns an instance of this contract after sending the transaction
@@ -17468,10 +17468,7 @@ pub mod mailbox {
         ///Calls the contract's `defaultIsm` (0x6e5f516e) function
         pub fn default_ism(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([110, 95, 81, 110], ())
                 .expect("method not found (this should never happen)")
@@ -17524,9 +17521,7 @@ pub mod mailbox {
                 .expect("method not found (this should never happen)")
         }
         ///Calls the contract's `localDomain` (0x8d3638f4) function
-        pub fn local_domain(
-            &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, u32> {
+        pub fn local_domain(&self) -> ::ethers::contract::builders::ContractCall<M, u32> {
             self.0
                 .method_hash([141, 54, 56, 244], ())
                 .expect("method not found (this should never happen)")
@@ -17534,10 +17529,7 @@ pub mod mailbox {
         ///Calls the contract's `owner` (0x8da5cb5b) function
         pub fn owner(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([141, 165, 203, 91], ())
                 .expect("method not found (this should never happen)")
@@ -17562,18 +17554,13 @@ pub mod mailbox {
         pub fn recipient_ism(
             &self,
             recipient: ::ethers::core::types::Address,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([231, 15, 72, 172], recipient)
                 .expect("method not found (this should never happen)")
         }
         ///Calls the contract's `renounceOwnership` (0x715018a6) function
-        pub fn renounce_ownership(
-            &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, ()> {
+        pub fn renounce_ownership(&self) -> ::ethers::contract::builders::ContractCall<M, ()> {
             self.0
                 .method_hash([113, 80, 24, 166], ())
                 .expect("method not found (this should never happen)")
@@ -17619,51 +17606,34 @@ pub mod mailbox {
         ///Gets the contract's `DefaultIsmSet` event
         pub fn default_ism_set_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            DefaultIsmSetFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, DefaultIsmSetFilter>
+        {
             self.0.event()
         }
         ///Gets the contract's `Dispatch` event
         pub fn dispatch_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            DispatchFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, DispatchFilter> {
             self.0.event()
         }
         ///Gets the contract's `DispatchId` event
         pub fn dispatch_id_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            DispatchIdFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, DispatchIdFilter> {
             self.0.event()
         }
         ///Gets the contract's `Initialized` event
         pub fn initialized_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            InitializedFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, InitializedFilter>
+        {
             self.0.event()
         }
         ///Gets the contract's `OwnershipTransferred` event
         pub fn ownership_transferred_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            OwnershipTransferredFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, OwnershipTransferredFilter>
+        {
             self.0.event()
         }
         ///Gets the contract's `Paused` event
@@ -17681,32 +17651,24 @@ pub mod mailbox {
         ///Gets the contract's `ProcessId` event
         pub fn process_id_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            ProcessIdFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, ProcessIdFilter> {
             self.0.event()
         }
         ///Gets the contract's `Unpaused` event
         pub fn unpaused_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            UnpausedFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, UnpausedFilter> {
             self.0.event()
         }
         /// Returns an `Event` builder for all the events of this contract.
         pub fn events(
             &self,
         ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, MailboxEvents> {
-            self.0.event_with_filter(::core::default::Default::default())
+            self.0
+                .event_with_filter(::core::default::Default::default())
         }
     }
-    impl<M: ::ethers::providers::Middleware> From<::ethers::contract::Contract<M>>
-    for Mailbox<M> {
+    impl<M: ::ethers::providers::Middleware> From<::ethers::contract::Contract<M>> for Mailbox<M> {
         fn from(contract: ::ethers::contract::Contract<M>) -> Self {
             Self::new(contract.address(), contract.client())
         }
@@ -17719,7 +17681,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "DefaultIsmSet", abi = "DefaultIsmSet(address)")]
     pub struct DefaultIsmSetFilter {
@@ -17734,7 +17696,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "Dispatch", abi = "Dispatch(address,uint32,bytes32,bytes)")]
     pub struct DispatchFilter {
@@ -17754,7 +17716,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "DispatchId", abi = "DispatchId(bytes32)")]
     pub struct DispatchIdFilter {
@@ -17769,7 +17731,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "Initialized", abi = "Initialized(uint8)")]
     pub struct InitializedFilter {
@@ -17783,7 +17745,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(
         name = "OwnershipTransferred",
@@ -17803,7 +17765,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "Paused", abi = "Paused()")]
     pub struct PausedFilter;
@@ -17815,7 +17777,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "Process", abi = "Process(uint32,bytes32,address)")]
     pub struct ProcessFilter {
@@ -17834,7 +17796,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "ProcessId", abi = "ProcessId(bytes32)")]
     pub struct ProcessIdFilter {
@@ -17849,7 +17811,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "Unpaused", abi = "Unpaused()")]
     pub struct UnpausedFilter;
@@ -17903,15 +17865,11 @@ pub mod mailbox {
     impl ::core::fmt::Display for MailboxEvents {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
             match self {
-                Self::DefaultIsmSetFilter(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
+                Self::DefaultIsmSetFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::DispatchFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::DispatchIdFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::InitializedFilter(element) => ::core::fmt::Display::fmt(element, f),
-                Self::OwnershipTransferredFilter(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
+                Self::OwnershipTransferredFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::PausedFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::ProcessFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::ProcessIdFilter(element) => ::core::fmt::Display::fmt(element, f),
@@ -17973,7 +17931,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "MAX_MESSAGE_BODY_BYTES", abi = "MAX_MESSAGE_BODY_BYTES()")]
     pub struct MaxMessageBodyBytesCall;
@@ -17986,7 +17944,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "VERSION", abi = "VERSION()")]
     pub struct VersionCall;
@@ -17999,7 +17957,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "count", abi = "count()")]
     pub struct CountCall;
@@ -18012,7 +17970,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "defaultIsm", abi = "defaultIsm()")]
     pub struct DefaultIsmCall;
@@ -18025,7 +17983,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "delivered", abi = "delivered(bytes32)")]
     pub struct DeliveredCall(pub [u8; 32]);
@@ -18038,7 +17996,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "dispatch", abi = "dispatch(uint32,bytes32,bytes)")]
     pub struct DispatchCall {
@@ -18055,7 +18013,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "initialize", abi = "initialize(address,address)")]
     pub struct InitializeCall {
@@ -18071,7 +18029,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "isPaused", abi = "isPaused()")]
     pub struct IsPausedCall;
@@ -18084,7 +18042,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "latestCheckpoint", abi = "latestCheckpoint()")]
     pub struct LatestCheckpointCall;
@@ -18097,7 +18055,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "localDomain", abi = "localDomain()")]
     pub struct LocalDomainCall;
@@ -18110,7 +18068,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "owner", abi = "owner()")]
     pub struct OwnerCall;
@@ -18123,7 +18081,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "pause", abi = "pause()")]
     pub struct PauseCall;
@@ -18136,7 +18094,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "process", abi = "process(bytes,bytes)")]
     pub struct ProcessCall {
@@ -18152,7 +18110,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "recipientIsm", abi = "recipientIsm(address)")]
     pub struct RecipientIsmCall {
@@ -18167,7 +18125,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "renounceOwnership", abi = "renounceOwnership()")]
     pub struct RenounceOwnershipCall;
@@ -18180,7 +18138,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "root", abi = "root()")]
     pub struct RootCall;
@@ -18193,7 +18151,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "setDefaultIsm", abi = "setDefaultIsm(address)")]
     pub struct SetDefaultIsmCall {
@@ -18208,7 +18166,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "transferOwnership", abi = "transferOwnership(address)")]
     pub struct TransferOwnershipCall {
@@ -18223,7 +18181,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "tree", abi = "tree()")]
     pub struct TreeCall;
@@ -18236,7 +18194,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "unpause", abi = "unpause()")]
     pub struct UnpauseCall;
@@ -18269,92 +18227,74 @@ pub mod mailbox {
             data: impl AsRef<[u8]>,
         ) -> ::core::result::Result<Self, ::ethers::core::abi::AbiError> {
             let data = data.as_ref();
-            if let Ok(decoded)
-                = <MaxMessageBodyBytesCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <MaxMessageBodyBytesCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::MaxMessageBodyBytes(decoded));
             }
-            if let Ok(decoded)
-                = <VersionCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <VersionCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Version(decoded));
             }
-            if let Ok(decoded)
-                = <CountCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <CountCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Count(decoded));
             }
-            if let Ok(decoded)
-                = <DefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <DefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::DefaultIsm(decoded));
             }
-            if let Ok(decoded)
-                = <DeliveredCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <DeliveredCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Delivered(decoded));
             }
-            if let Ok(decoded)
-                = <DispatchCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <DispatchCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Dispatch(decoded));
             }
-            if let Ok(decoded)
-                = <InitializeCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <InitializeCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Initialize(decoded));
             }
-            if let Ok(decoded)
-                = <IsPausedCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <IsPausedCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::IsPaused(decoded));
             }
-            if let Ok(decoded)
-                = <LatestCheckpointCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <LatestCheckpointCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::LatestCheckpoint(decoded));
             }
-            if let Ok(decoded)
-                = <LocalDomainCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <LocalDomainCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::LocalDomain(decoded));
             }
-            if let Ok(decoded)
-                = <OwnerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <OwnerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Owner(decoded));
             }
-            if let Ok(decoded)
-                = <PauseCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <PauseCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Pause(decoded));
             }
-            if let Ok(decoded)
-                = <ProcessCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <ProcessCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Process(decoded));
             }
-            if let Ok(decoded)
-                = <RecipientIsmCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <RecipientIsmCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::RecipientIsm(decoded));
             }
-            if let Ok(decoded)
-                = <RenounceOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <RenounceOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::RenounceOwnership(decoded));
             }
-            if let Ok(decoded)
-                = <RootCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <RootCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Root(decoded));
             }
-            if let Ok(decoded)
-                = <SetDefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <SetDefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::SetDefaultIsm(decoded));
             }
-            if let Ok(decoded)
-                = <TransferOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <TransferOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::TransferOwnership(decoded));
             }
-            if let Ok(decoded)
-                = <TreeCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <TreeCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Tree(decoded));
             }
-            if let Ok(decoded)
-                = <UnpauseCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <UnpauseCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Unpause(decoded));
             }
             Err(::ethers::core::abi::Error::InvalidData.into())
@@ -18368,43 +18308,21 @@ pub mod mailbox {
                 }
                 Self::Version(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Count(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::DefaultIsm(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::Delivered(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::Dispatch(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::Initialize(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::IsPaused(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::LatestCheckpoint(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::LocalDomain(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::DefaultIsm(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::Delivered(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::Dispatch(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::Initialize(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::IsPaused(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::LatestCheckpoint(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::LocalDomain(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Owner(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Pause(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Process(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::RecipientIsm(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::RenounceOwnership(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::RecipientIsm(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::RenounceOwnership(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Root(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::SetDefaultIsm(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::TransferOwnership(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::SetDefaultIsm(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::TransferOwnership(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Tree(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Unpause(element) => ::ethers::core::abi::AbiEncode::encode(element),
             }
@@ -18413,9 +18331,7 @@ pub mod mailbox {
     impl ::core::fmt::Display for MailboxCalls {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
             match self {
-                Self::MaxMessageBodyBytes(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
+                Self::MaxMessageBodyBytes(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Version(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Count(element) => ::core::fmt::Display::fmt(element, f),
                 Self::DefaultIsm(element) => ::core::fmt::Display::fmt(element, f),
@@ -18547,7 +18463,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct MaxMessageBodyBytesReturn(pub ::ethers::core::types::U256);
     ///Container type for all return fields from the `VERSION` function with signature `VERSION()` and selector `0xffa1ad74`
@@ -18559,7 +18475,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct VersionReturn(pub u8);
     ///Container type for all return fields from the `count` function with signature `count()` and selector `0x06661abd`
@@ -18571,7 +18487,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct CountReturn(pub u32);
     ///Container type for all return fields from the `defaultIsm` function with signature `defaultIsm()` and selector `0x6e5f516e`
@@ -18583,7 +18499,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct DefaultIsmReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `delivered` function with signature `delivered(bytes32)` and selector `0xe495f1d4`
@@ -18595,7 +18511,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct DeliveredReturn(pub bool);
     ///Container type for all return fields from the `dispatch` function with signature `dispatch(uint32,bytes32,bytes)` and selector `0xfa31de01`
@@ -18607,7 +18523,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct DispatchReturn(pub [u8; 32]);
     ///Container type for all return fields from the `isPaused` function with signature `isPaused()` and selector `0xb187bd26`
@@ -18619,7 +18535,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct IsPausedReturn(pub bool);
     ///Container type for all return fields from the `latestCheckpoint` function with signature `latestCheckpoint()` and selector `0x907c0f92`
@@ -18631,7 +18547,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct LatestCheckpointReturn(pub [u8; 32], pub u32);
     ///Container type for all return fields from the `localDomain` function with signature `localDomain()` and selector `0x8d3638f4`
@@ -18643,7 +18559,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct LocalDomainReturn(pub u32);
     ///Container type for all return fields from the `owner` function with signature `owner()` and selector `0x8da5cb5b`
@@ -18655,7 +18571,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct OwnerReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `recipientIsm` function with signature `recipientIsm(address)` and selector `0xe70f48ac`
@@ -18667,7 +18583,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct RecipientIsmReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `root` function with signature `root()` and selector `0xebf0c717`
@@ -18679,7 +18595,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct RootReturn(pub [u8; 32]);
     ///Container type for all return fields from the `tree` function with signature `tree()` and selector `0xfd54b228`
@@ -18691,7 +18607,7 @@ pub mod mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct TreeReturn {
         pub count: ::ethers::core::types::U256,

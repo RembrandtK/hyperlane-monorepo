@@ -7,18 +7,16 @@ pub use mock_hyperlane_environment::*;
     clippy::upper_case_acronyms,
     clippy::type_complexity,
     dead_code,
-    non_camel_case_types,
+    non_camel_case_types
 )]
 pub mod mock_hyperlane_environment {
     #[rustfmt::skip]
     const __ABI: &str = "[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_originDomain\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"igps\",\"outputs\":[{\"internalType\":\"contract TestInterchainGasPaymaster\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"isms\",\"outputs\":[{\"internalType\":\"contract IInterchainSecurityModule\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"mailboxes\",\"outputs\":[{\"internalType\":\"contract MockMailbox\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"processNextPendingMessage\",\"outputs\":[]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"processNextPendingMessageFromDestination\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"queryRouters\",\"outputs\":[{\"internalType\":\"contract InterchainQueryRouter\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]}]";
     ///The parsed JSON ABI of the contract.
-    pub static MOCKHYPERLANEENVIRONMENT_ABI: ::ethers::contract::Lazy<
-        ::ethers::core::abi::Abi,
-    > = ::ethers::contract::Lazy::new(|| {
-        ::ethers::core::utils::__serde_json::from_str(__ABI)
-            .expect("ABI is always valid")
-    });
+    pub static MOCKHYPERLANEENVIRONMENT_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> =
+        ::ethers::contract::Lazy::new(|| {
+            ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid")
+        });
     #[rustfmt::skip]
     const __BYTECODE: &[u8] = &[
         96,
@@ -23824,9 +23822,8 @@ pub mod mock_hyperlane_environment {
         51,
     ];
     ///The bytecode of the contract.
-    pub static MOCKHYPERLANEENVIRONMENT_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
-        __BYTECODE,
-    );
+    pub static MOCKHYPERLANEENVIRONMENT_BYTECODE: ::ethers::core::types::Bytes =
+        ::ethers::core::types::Bytes::from_static(__BYTECODE);
     #[rustfmt::skip]
     const __DEPLOYED_BYTECODE: &[u8] = &[
         96,
@@ -24625,9 +24622,8 @@ pub mod mock_hyperlane_environment {
         51,
     ];
     ///The deployed bytecode of the contract.
-    pub static MOCKHYPERLANEENVIRONMENT_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
-        __DEPLOYED_BYTECODE,
-    );
+    pub static MOCKHYPERLANEENVIRONMENT_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes =
+        ::ethers::core::types::Bytes::from_static(__DEPLOYED_BYTECODE);
     pub struct MockHyperlaneEnvironment<M>(::ethers::contract::Contract<M>);
     impl<M> ::core::clone::Clone for MockHyperlaneEnvironment<M> {
         fn clone(&self) -> Self {
@@ -24659,13 +24655,11 @@ pub mod mock_hyperlane_environment {
             address: T,
             client: ::std::sync::Arc<M>,
         ) -> Self {
-            Self(
-                ::ethers::contract::Contract::new(
-                    address.into(),
-                    MOCKHYPERLANEENVIRONMENT_ABI.clone(),
-                    client,
-                ),
-            )
+            Self(::ethers::contract::Contract::new(
+                address.into(),
+                MOCKHYPERLANEENVIRONMENT_ABI.clone(),
+                client,
+            ))
         }
         /// Constructs the general purpose `Deployer` instance based on the provided constructor arguments and sends it.
         /// Returns a new instance of a deployer that returns an instance of this contract after sending the transaction
@@ -24710,10 +24704,7 @@ pub mod mock_hyperlane_environment {
         pub fn igps(
             &self,
             p0: u32,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([122, 126, 173, 163], p0)
                 .expect("method not found (this should never happen)")
@@ -24722,10 +24713,7 @@ pub mod mock_hyperlane_environment {
         pub fn isms(
             &self,
             p0: u32,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([90, 0, 123, 126], p0)
                 .expect("method not found (this should never happen)")
@@ -24734,10 +24722,7 @@ pub mod mock_hyperlane_environment {
         pub fn mailboxes(
             &self,
             p0: u32,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([241, 26, 54, 126], p0)
                 .expect("method not found (this should never happen)")
@@ -24762,17 +24747,15 @@ pub mod mock_hyperlane_environment {
         pub fn query_routers(
             &self,
             p0: u32,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([233, 238, 70, 149], p0)
                 .expect("method not found (this should never happen)")
         }
     }
     impl<M: ::ethers::providers::Middleware> From<::ethers::contract::Contract<M>>
-    for MockHyperlaneEnvironment<M> {
+        for MockHyperlaneEnvironment<M>
+    {
         fn from(contract: ::ethers::contract::Contract<M>) -> Self {
             Self::new(contract.address(), contract.client())
         }
@@ -24786,7 +24769,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "igps", abi = "igps(uint32)")]
     pub struct IgpsCall(pub u32);
@@ -24799,7 +24782,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "isms", abi = "isms(uint32)")]
     pub struct IsmsCall(pub u32);
@@ -24812,7 +24795,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "mailboxes", abi = "mailboxes(uint32)")]
     pub struct MailboxesCall(pub u32);
@@ -24825,9 +24808,12 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
-    #[ethcall(name = "processNextPendingMessage", abi = "processNextPendingMessage()")]
+    #[ethcall(
+        name = "processNextPendingMessage",
+        abi = "processNextPendingMessage()"
+    )]
     pub struct ProcessNextPendingMessageCall;
     ///Container type for all input parameters for the `processNextPendingMessageFromDestination` function with signature `processNextPendingMessageFromDestination()` and selector `0xf9d2692d`
     #[derive(
@@ -24838,7 +24824,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(
         name = "processNextPendingMessageFromDestination",
@@ -24854,7 +24840,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "queryRouters", abi = "queryRouters(uint32)")]
     pub struct QueryRoutersCall(pub u32);
@@ -24865,9 +24851,7 @@ pub mod mock_hyperlane_environment {
         Isms(IsmsCall),
         Mailboxes(MailboxesCall),
         ProcessNextPendingMessage(ProcessNextPendingMessageCall),
-        ProcessNextPendingMessageFromDestination(
-            ProcessNextPendingMessageFromDestinationCall,
-        ),
+        ProcessNextPendingMessageFromDestination(ProcessNextPendingMessageFromDestinationCall),
         QueryRouters(QueryRoutersCall),
     }
     impl ::ethers::core::abi::AbiDecode for MockHyperlaneEnvironmentCalls {
@@ -24875,22 +24859,18 @@ pub mod mock_hyperlane_environment {
             data: impl AsRef<[u8]>,
         ) -> ::core::result::Result<Self, ::ethers::core::abi::AbiError> {
             let data = data.as_ref();
-            if let Ok(decoded)
-                = <IgpsCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <IgpsCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Igps(decoded));
             }
-            if let Ok(decoded)
-                = <IsmsCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <IsmsCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Isms(decoded));
             }
-            if let Ok(decoded)
-                = <MailboxesCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <MailboxesCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Mailboxes(decoded));
             }
-            if let Ok(decoded)
-                = <ProcessNextPendingMessageCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <ProcessNextPendingMessageCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::ProcessNextPendingMessage(decoded));
             }
             if let Ok(decoded)
@@ -24899,8 +24879,8 @@ pub mod mock_hyperlane_environment {
                 ) {
                 return Ok(Self::ProcessNextPendingMessageFromDestination(decoded));
             }
-            if let Ok(decoded)
-                = <QueryRoutersCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <QueryRoutersCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::QueryRouters(decoded));
             }
             Err(::ethers::core::abi::Error::InvalidData.into())
@@ -24911,18 +24891,14 @@ pub mod mock_hyperlane_environment {
             match self {
                 Self::Igps(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Isms(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::Mailboxes(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::Mailboxes(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::ProcessNextPendingMessage(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
                 Self::ProcessNextPendingMessageFromDestination(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
-                Self::QueryRouters(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::QueryRouters(element) => ::ethers::core::abi::AbiEncode::encode(element),
             }
         }
     }
@@ -24932,9 +24908,7 @@ pub mod mock_hyperlane_environment {
                 Self::Igps(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Isms(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Mailboxes(element) => ::core::fmt::Display::fmt(element, f),
-                Self::ProcessNextPendingMessage(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
+                Self::ProcessNextPendingMessage(element) => ::core::fmt::Display::fmt(element, f),
                 Self::ProcessNextPendingMessageFromDestination(element) => {
                     ::core::fmt::Display::fmt(element, f)
                 }
@@ -24957,14 +24931,14 @@ pub mod mock_hyperlane_environment {
             Self::Mailboxes(value)
         }
     }
-    impl ::core::convert::From<ProcessNextPendingMessageCall>
-    for MockHyperlaneEnvironmentCalls {
+    impl ::core::convert::From<ProcessNextPendingMessageCall> for MockHyperlaneEnvironmentCalls {
         fn from(value: ProcessNextPendingMessageCall) -> Self {
             Self::ProcessNextPendingMessage(value)
         }
     }
     impl ::core::convert::From<ProcessNextPendingMessageFromDestinationCall>
-    for MockHyperlaneEnvironmentCalls {
+        for MockHyperlaneEnvironmentCalls
+    {
         fn from(value: ProcessNextPendingMessageFromDestinationCall) -> Self {
             Self::ProcessNextPendingMessageFromDestination(value)
         }
@@ -24983,7 +24957,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct IgpsReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `isms` function with signature `isms(uint32)` and selector `0x5a007b7e`
@@ -24995,7 +24969,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct IsmsReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `mailboxes` function with signature `mailboxes(uint32)` and selector `0xf11a367e`
@@ -25007,7 +24981,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct MailboxesReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `queryRouters` function with signature `queryRouters(uint32)` and selector `0xe9ee4695`
@@ -25019,7 +24993,7 @@ pub mod mock_hyperlane_environment {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct QueryRoutersReturn(pub ::ethers::core::types::Address);
 }

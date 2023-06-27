@@ -87,10 +87,11 @@ pub struct CliArgs {
     #[arg(long, default_value = "100000")]
     pub gas: u32,
 
-    // TODO: Implement reading query criteria from file.
-    // / Read query criteria from file.
-    // #[arg(short, long)]
-    // pub file: Option<PathBuf>,
+    /// Read query criteria from file, with either JSON or CSV format criteria
+    ///
+    /// For CSV, can specify multiple criteria separated by whitespace (e.g. one per line)
+    #[arg(short, long)]
+    pub query_file: Option<PathBuf>,
 
     // /// Maximum number of messages to return.
     // /// If negative, will return last N matching messages.
