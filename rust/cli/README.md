@@ -279,6 +279,7 @@ To dispatch a message use the `--dispatch` flag. This calls the dispatch method 
 Connecting to: https://rpc.sepolia.org/
 Origin: 11155111 Sepolia Ethereum Testnet
 Destination: 80001 Mumbai Ethereum Testnet
+
 Dispatch in block 3777198, tx hash: 0x6d7f875b01814d761cbca053761d21dd423e79e3d37b02f82cd2a3125b8537bd
   Message ID: 0xb587dcf2a22ca926653191d8d413715eafeaffdd4f338b07e066b74eb9dc058a
 ```
@@ -315,7 +316,9 @@ Using the message ID you can now pay for delivery on the destination chain:
 Connecting to: https://rpc.sepolia.org/
 Origin: 11155111 Sepolia Ethereum Testnet
 Destination: 80001 Mumbai Ethereum Testnet
+
 Quote for 10000 gas on destination chain: 1985911200000000
+
 Pay in block 3777233, hash: 0x6c05a89d1a0f1e2caa8c646a03ff8b0df9fd9ffdd3078fdf9172a45324ba7f7c
 ```
 
@@ -396,6 +399,7 @@ You can run it the other way around, you will need to have setup the Mumbai URL 
 Connecting to: https://polygon-mumbai.g.alchemy.com/v2/aPLVVNblPlrQieWUV3je3G4Ro9KPsZxi
 Origin: 80001 Mumbai Ethereum Testnet
 Destination: 11155111 Sepolia Ethereum Testnet
+
 Dispatch in block 37326816, tx hash: 0xe927245bc2b3f1709745ef43323feb8c9edd5637e3308f74bca43c9fcbb46e36
   Message ID: 0x8eaaecdf095dea02f1e9ef0a365e8150ad23d32c8567f4e82b353fe8d75bed33
 ```
@@ -410,9 +414,12 @@ Now lets dispatch and pay for delivery of a message using one command:
 Connecting to: https://polygon-mumbai.g.alchemy.com/v2/aPLVVNblPlrQieWUV3je3G4Ro9KPsZxi
 Origin: 80001 Mumbai Ethereum Testnet
 Destination: 11155111 Sepolia Ethereum Testnet
+
 Dispatch in block 37326959, tx hash: 0x0cd5ff87dc5c0970f3015208166f13b19e772e841e3a786815edc001d47c8486
   Message ID: 0x1d95459b7d654dc9de9b82466e43d5412982b7c1af8aa261770903306a9c9d2a
+
 Quote for 100000 gas on destination chain: 8441420000000000
+
 Pay in block 37326962, hash: 0x532d9b60d49f809d3638de8f63e3cf34714865a8720028cfe3ac90c7b27fb5d4
 ```
 
