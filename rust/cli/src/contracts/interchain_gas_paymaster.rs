@@ -7,18 +7,16 @@ pub use interchain_gas_paymaster::*;
     clippy::upper_case_acronyms,
     clippy::type_complexity,
     dead_code,
-    non_camel_case_types,
+    non_camel_case_types
 )]
 pub mod interchain_gas_paymaster {
     #[rustfmt::skip]
     const __ABI: &str = "[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"beneficiary\",\"type\":\"address\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"BeneficiarySet\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"remoteDomain\",\"type\":\"uint32\",\"components\":[],\"indexed\":true},{\"internalType\":\"address\",\"name\":\"gasOracle\",\"type\":\"address\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"GasOracleSet\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true},{\"internalType\":\"uint256\",\"name\":\"gasAmount\",\"type\":\"uint256\",\"components\":[],\"indexed\":false},{\"internalType\":\"uint256\",\"name\":\"payment\",\"type\":\"uint256\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"GasPayment\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"uint8\",\"name\":\"version\",\"type\":\"uint8\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"Initialized\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\",\"components\":[],\"indexed\":true},{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"OwnershipTransferred\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"beneficiary\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"claim\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"gasOracles\",\"outputs\":[{\"internalType\":\"contract IGasOracle\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"getExchangeRateAndGasPrice\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"tokenExchangeRate\",\"type\":\"uint128\",\"components\":[]},{\"internalType\":\"uint128\",\"name\":\"gasPrice\",\"type\":\"uint128\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"_beneficiary\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"initialize\",\"outputs\":[]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_messageId\",\"type\":\"bytes32\",\"components\":[]},{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"uint256\",\"name\":\"_gasAmount\",\"type\":\"uint256\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"_refundAddress\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"payable\",\"type\":\"function\",\"name\":\"payForGas\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"uint256\",\"name\":\"_gasAmount\",\"type\":\"uint256\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"quoteGasPayment\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"renounceOwnership\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_beneficiary\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"setBeneficiary\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"struct InterchainGasPaymaster.GasOracleConfig[]\",\"name\":\"_configs\",\"type\":\"tuple[]\",\"components\":[{\"internalType\":\"uint32\",\"name\":\"remoteDomain\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"gasOracle\",\"type\":\"address\",\"components\":[]}]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"setGasOracles\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"transferOwnership\",\"outputs\":[]}]";
     ///The parsed JSON ABI of the contract.
-    pub static INTERCHAINGASPAYMASTER_ABI: ::ethers::contract::Lazy<
-        ::ethers::core::abi::Abi,
-    > = ::ethers::contract::Lazy::new(|| {
-        ::ethers::core::utils::__serde_json::from_str(__ABI)
-            .expect("ABI is always valid")
-    });
+    pub static INTERCHAINGASPAYMASTER_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> =
+        ::ethers::contract::Lazy::new(|| {
+            ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid")
+        });
     #[rustfmt::skip]
     const __BYTECODE: &[u8] = &[
         96,
@@ -4259,9 +4257,8 @@ pub mod interchain_gas_paymaster {
         51,
     ];
     ///The bytecode of the contract.
-    pub static INTERCHAINGASPAYMASTER_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
-        __BYTECODE,
-    );
+    pub static INTERCHAINGASPAYMASTER_BYTECODE: ::ethers::core::types::Bytes =
+        ::ethers::core::types::Bytes::from_static(__BYTECODE);
     #[rustfmt::skip]
     const __DEPLOYED_BYTECODE: &[u8] = &[
         96,
@@ -8470,9 +8467,8 @@ pub mod interchain_gas_paymaster {
         51,
     ];
     ///The deployed bytecode of the contract.
-    pub static INTERCHAINGASPAYMASTER_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
-        __DEPLOYED_BYTECODE,
-    );
+    pub static INTERCHAINGASPAYMASTER_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes =
+        ::ethers::core::types::Bytes::from_static(__DEPLOYED_BYTECODE);
     pub struct InterchainGasPaymaster<M>(::ethers::contract::Contract<M>);
     impl<M> ::core::clone::Clone for InterchainGasPaymaster<M> {
         fn clone(&self) -> Self {
@@ -8504,13 +8500,11 @@ pub mod interchain_gas_paymaster {
             address: T,
             client: ::std::sync::Arc<M>,
         ) -> Self {
-            Self(
-                ::ethers::contract::Contract::new(
-                    address.into(),
-                    INTERCHAINGASPAYMASTER_ABI.clone(),
-                    client,
-                ),
-            )
+            Self(::ethers::contract::Contract::new(
+                address.into(),
+                INTERCHAINGASPAYMASTER_ABI.clone(),
+                client,
+            ))
         }
         /// Constructs the general purpose `Deployer` instance based on the provided constructor arguments and sends it.
         /// Returns a new instance of a deployer that returns an instance of this contract after sending the transaction
@@ -8554,10 +8548,7 @@ pub mod interchain_gas_paymaster {
         ///Calls the contract's `beneficiary` (0x38af3eed) function
         pub fn beneficiary(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([56, 175, 62, 237], ())
                 .expect("method not found (this should never happen)")
@@ -8572,10 +8563,7 @@ pub mod interchain_gas_paymaster {
         pub fn gas_oracles(
             &self,
             p0: u32,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([29, 22, 200, 200], p0)
                 .expect("method not found (this should never happen)")
@@ -8602,10 +8590,7 @@ pub mod interchain_gas_paymaster {
         ///Calls the contract's `owner` (0x8da5cb5b) function
         pub fn owner(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<
-            M,
-            ::ethers::core::types::Address,
-        > {
+        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
             self.0
                 .method_hash([141, 165, 203, 91], ())
                 .expect("method not found (this should never happen)")
@@ -8636,9 +8621,7 @@ pub mod interchain_gas_paymaster {
                 .expect("method not found (this should never happen)")
         }
         ///Calls the contract's `renounceOwnership` (0x715018a6) function
-        pub fn renounce_ownership(
-            &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, ()> {
+        pub fn renounce_ownership(&self) -> ::ethers::contract::builders::ContractCall<M, ()> {
             self.0
                 .method_hash([113, 80, 24, 166], ())
                 .expect("method not found (this should never happen)")
@@ -8673,66 +8656,49 @@ pub mod interchain_gas_paymaster {
         ///Gets the contract's `BeneficiarySet` event
         pub fn beneficiary_set_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            BeneficiarySetFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, BeneficiarySetFilter>
+        {
             self.0.event()
         }
         ///Gets the contract's `GasOracleSet` event
         pub fn gas_oracle_set_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            GasOracleSetFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, GasOracleSetFilter>
+        {
             self.0.event()
         }
         ///Gets the contract's `GasPayment` event
         pub fn gas_payment_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            GasPaymentFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, GasPaymentFilter> {
             self.0.event()
         }
         ///Gets the contract's `Initialized` event
         pub fn initialized_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            InitializedFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, InitializedFilter>
+        {
             self.0.event()
         }
         ///Gets the contract's `OwnershipTransferred` event
         pub fn ownership_transferred_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            OwnershipTransferredFilter,
-        > {
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, OwnershipTransferredFilter>
+        {
             self.0.event()
         }
         /// Returns an `Event` builder for all the events of this contract.
         pub fn events(
             &self,
-        ) -> ::ethers::contract::builders::Event<
-            ::std::sync::Arc<M>,
-            M,
-            InterchainGasPaymasterEvents,
-        > {
-            self.0.event_with_filter(::core::default::Default::default())
+        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, InterchainGasPaymasterEvents>
+        {
+            self.0
+                .event_with_filter(::core::default::Default::default())
         }
     }
     impl<M: ::ethers::providers::Middleware> From<::ethers::contract::Contract<M>>
-    for InterchainGasPaymaster<M> {
+        for InterchainGasPaymaster<M>
+    {
         fn from(contract: ::ethers::contract::Contract<M>) -> Self {
             Self::new(contract.address(), contract.client())
         }
@@ -8745,7 +8711,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "BeneficiarySet", abi = "BeneficiarySet(address)")]
     pub struct BeneficiarySetFilter {
@@ -8759,7 +8725,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "GasOracleSet", abi = "GasOracleSet(uint32,address)")]
     pub struct GasOracleSetFilter {
@@ -8775,7 +8741,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "GasPayment", abi = "GasPayment(bytes32,uint256,uint256)")]
     pub struct GasPaymentFilter {
@@ -8792,7 +8758,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(name = "Initialized", abi = "Initialized(uint8)")]
     pub struct InitializedFilter {
@@ -8806,7 +8772,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethevent(
         name = "OwnershipTransferred",
@@ -8844,9 +8810,9 @@ pub mod interchain_gas_paymaster {
                 return Ok(InterchainGasPaymasterEvents::InitializedFilter(decoded));
             }
             if let Ok(decoded) = OwnershipTransferredFilter::decode_log(log) {
-                return Ok(
-                    InterchainGasPaymasterEvents::OwnershipTransferredFilter(decoded),
-                );
+                return Ok(InterchainGasPaymasterEvents::OwnershipTransferredFilter(
+                    decoded,
+                ));
             }
             Err(::ethers::core::abi::Error::InvalidData)
         }
@@ -8854,17 +8820,11 @@ pub mod interchain_gas_paymaster {
     impl ::core::fmt::Display for InterchainGasPaymasterEvents {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
             match self {
-                Self::BeneficiarySetFilter(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
-                Self::GasOracleSetFilter(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
+                Self::BeneficiarySetFilter(element) => ::core::fmt::Display::fmt(element, f),
+                Self::GasOracleSetFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::GasPaymentFilter(element) => ::core::fmt::Display::fmt(element, f),
                 Self::InitializedFilter(element) => ::core::fmt::Display::fmt(element, f),
-                Self::OwnershipTransferredFilter(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
+                Self::OwnershipTransferredFilter(element) => ::core::fmt::Display::fmt(element, f),
             }
         }
     }
@@ -8888,8 +8848,7 @@ pub mod interchain_gas_paymaster {
             Self::InitializedFilter(value)
         }
     }
-    impl ::core::convert::From<OwnershipTransferredFilter>
-    for InterchainGasPaymasterEvents {
+    impl ::core::convert::From<OwnershipTransferredFilter> for InterchainGasPaymasterEvents {
         fn from(value: OwnershipTransferredFilter) -> Self {
             Self::OwnershipTransferredFilter(value)
         }
@@ -8903,7 +8862,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "beneficiary", abi = "beneficiary()")]
     pub struct BeneficiaryCall;
@@ -8916,7 +8875,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "claim", abi = "claim()")]
     pub struct ClaimCall;
@@ -8929,7 +8888,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "gasOracles", abi = "gasOracles(uint32)")]
     pub struct GasOraclesCall(pub u32);
@@ -8942,7 +8901,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(
         name = "getExchangeRateAndGasPrice",
@@ -8960,7 +8919,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "initialize", abi = "initialize(address,address)")]
     pub struct InitializeCall {
@@ -8976,7 +8935,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "owner", abi = "owner()")]
     pub struct OwnerCall;
@@ -8989,7 +8948,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "payForGas", abi = "payForGas(bytes32,uint32,uint256,address)")]
     pub struct PayForGasCall {
@@ -9007,7 +8966,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "quoteGasPayment", abi = "quoteGasPayment(uint32,uint256)")]
     pub struct QuoteGasPaymentCall {
@@ -9023,7 +8982,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "renounceOwnership", abi = "renounceOwnership()")]
     pub struct RenounceOwnershipCall;
@@ -9036,7 +8995,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "setBeneficiary", abi = "setBeneficiary(address)")]
     pub struct SetBeneficiaryCall {
@@ -9051,7 +9010,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "setGasOracles", abi = "setGasOracles((uint32,address)[])")]
     pub struct SetGasOraclesCall {
@@ -9066,7 +9025,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     #[ethcall(name = "transferOwnership", abi = "transferOwnership(address)")]
     pub struct TransferOwnershipCall {
@@ -9093,58 +9052,51 @@ pub mod interchain_gas_paymaster {
             data: impl AsRef<[u8]>,
         ) -> ::core::result::Result<Self, ::ethers::core::abi::AbiError> {
             let data = data.as_ref();
-            if let Ok(decoded)
-                = <BeneficiaryCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <BeneficiaryCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Beneficiary(decoded));
             }
-            if let Ok(decoded)
-                = <ClaimCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <ClaimCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Claim(decoded));
             }
-            if let Ok(decoded)
-                = <GasOraclesCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <GasOraclesCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::GasOracles(decoded));
             }
-            if let Ok(decoded)
-                = <GetExchangeRateAndGasPriceCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <GetExchangeRateAndGasPriceCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::GetExchangeRateAndGasPrice(decoded));
             }
-            if let Ok(decoded)
-                = <InitializeCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <InitializeCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Initialize(decoded));
             }
-            if let Ok(decoded)
-                = <OwnerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <OwnerCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Owner(decoded));
             }
-            if let Ok(decoded)
-                = <PayForGasCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <PayForGasCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::PayForGas(decoded));
             }
-            if let Ok(decoded)
-                = <QuoteGasPaymentCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) =
+                <QuoteGasPaymentCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::QuoteGasPayment(decoded));
             }
-            if let Ok(decoded)
-                = <RenounceOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <RenounceOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::RenounceOwnership(decoded));
             }
-            if let Ok(decoded)
-                = <SetBeneficiaryCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) =
+                <SetBeneficiaryCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::SetBeneficiary(decoded));
             }
-            if let Ok(decoded)
-                = <SetGasOraclesCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded) = <SetGasOraclesCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::SetGasOracles(decoded));
             }
-            if let Ok(decoded)
-                = <TransferOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(
-                    data,
-                ) {
+            if let Ok(decoded) =
+                <TransferOwnershipCall as ::ethers::core::abi::AbiDecode>::decode(data)
+            {
                 return Ok(Self::TransferOwnership(decoded));
             }
             Err(::ethers::core::abi::Error::InvalidData.into())
@@ -9153,38 +9105,20 @@ pub mod interchain_gas_paymaster {
     impl ::ethers::core::abi::AbiEncode for InterchainGasPaymasterCalls {
         fn encode(self) -> Vec<u8> {
             match self {
-                Self::Beneficiary(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::Beneficiary(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Claim(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::GasOracles(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::GasOracles(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::GetExchangeRateAndGasPrice(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
-                Self::Initialize(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::Initialize(element) => ::ethers::core::abi::AbiEncode::encode(element),
                 Self::Owner(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::PayForGas(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::QuoteGasPayment(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::RenounceOwnership(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::SetBeneficiary(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::SetGasOracles(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
-                Self::TransferOwnership(element) => {
-                    ::ethers::core::abi::AbiEncode::encode(element)
-                }
+                Self::PayForGas(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::QuoteGasPayment(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::RenounceOwnership(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::SetBeneficiary(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::SetGasOracles(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::TransferOwnership(element) => ::ethers::core::abi::AbiEncode::encode(element),
             }
         }
     }
@@ -9194,9 +9128,7 @@ pub mod interchain_gas_paymaster {
                 Self::Beneficiary(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Claim(element) => ::core::fmt::Display::fmt(element, f),
                 Self::GasOracles(element) => ::core::fmt::Display::fmt(element, f),
-                Self::GetExchangeRateAndGasPrice(element) => {
-                    ::core::fmt::Display::fmt(element, f)
-                }
+                Self::GetExchangeRateAndGasPrice(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Initialize(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Owner(element) => ::core::fmt::Display::fmt(element, f),
                 Self::PayForGas(element) => ::core::fmt::Display::fmt(element, f),
@@ -9223,8 +9155,7 @@ pub mod interchain_gas_paymaster {
             Self::GasOracles(value)
         }
     }
-    impl ::core::convert::From<GetExchangeRateAndGasPriceCall>
-    for InterchainGasPaymasterCalls {
+    impl ::core::convert::From<GetExchangeRateAndGasPriceCall> for InterchainGasPaymasterCalls {
         fn from(value: GetExchangeRateAndGasPriceCall) -> Self {
             Self::GetExchangeRateAndGasPrice(value)
         }
@@ -9278,7 +9209,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct BeneficiaryReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `gasOracles` function with signature `gasOracles(uint32)` and selector `0x1d16c8c8`
@@ -9290,7 +9221,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct GasOraclesReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `getExchangeRateAndGasPrice` function with signature `getExchangeRateAndGasPrice(uint32)` and selector `0x60fcef7c`
@@ -9302,7 +9233,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct GetExchangeRateAndGasPriceReturn {
         pub token_exchange_rate: u128,
@@ -9317,7 +9248,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct OwnerReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `quoteGasPayment` function with signature `quoteGasPayment(uint32,uint256)` and selector `0xa6929793`
@@ -9329,7 +9260,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct QuoteGasPaymentReturn(pub ::ethers::core::types::U256);
     ///`GasOracleConfig(uint32,address)`
@@ -9341,7 +9272,7 @@ pub mod interchain_gas_paymaster {
         Debug,
         PartialEq,
         Eq,
-        Hash
+        Hash,
     )]
     pub struct GasOracleConfig {
         pub remote_domain: u32,

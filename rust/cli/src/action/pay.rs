@@ -10,6 +10,7 @@ use ethers::{
 use hyperlane_core::{H160, H256, U256};
 
 /// Pay for message delivery on destination chain.
+#[allow(clippy::too_many_arguments)] // TODO: Fix, combine related arguments into structs
 pub async fn pay<M: Middleware + 'static>(
     wallet: LocalWallet,
     client: Arc<M>,
@@ -17,8 +18,11 @@ pub async fn pay<M: Middleware + 'static>(
     message_id: H256,
     dest_chain_id: u32,
     gas: U256,
+    confirmations: usize,
     verbose: bool,
 ) -> Result<()> {
+    println!();
+
     let gas_paymaster = InterchainGasPaymaster::new(paymaster_addr, client);
 
     let gas_quote = gas_paymaster.quote_gas_payment(dest_chain_id, gas).await?;
@@ -34,13 +38,14 @@ pub async fn pay<M: Middleware + 'static>(
         .value(gas_quote)
         .send()
         .await?
-        .confirmations(1)
+        .confirmations(confirmations)
         .await?;
 
     if verbose {
         println!("Transaction receipt: {:#?}", tx_receipt);
     };
 
+    println!();
     match tx_receipt {
         Some(receipt) => {
             println!(

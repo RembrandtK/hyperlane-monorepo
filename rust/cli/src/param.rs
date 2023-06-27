@@ -17,6 +17,8 @@ pub struct Params {
     pub rpc_url: String,
     /// Whether to print verbose output.
     pub verbose: bool,
+    /// Number of blocks to wait for transaction confirmation.
+    pub confirmations: usize,
     /// Whether to print debug output.
     pub debug: bool,
     /// Private key of the sender.
@@ -66,6 +68,7 @@ impl TryFrom<CliArgs> for Params {
         Ok(Self {
             rpc_url: args.url,
             verbose: args.verbose,
+            confirmations: args.confirmations,
             debug: args.debug,
             key: args.key,
 

@@ -74,11 +74,10 @@ pub struct CliArgs {
     #[arg(short, long, conflicts_with = "payload")]
     pub input: Option<PathBuf>,
 
-    // TODO: Add confirmation blocks option
-    // /// Number of confirmation blocks to wait for
-    // #[arg(long, default_value = "1")]
-    //
-    // pub confirmations: u32,
+    /// Number of confirmation blocks to wait for
+    #[arg(long, default_value = "1")]
+    pub confirmations: usize,
+
     /// Id of message to pay for
     #[arg(short, long, conflicts_with = "dispatch")]
     pub message_id: Option<H256>,

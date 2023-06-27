@@ -134,6 +134,7 @@ async fn perform_transactions(
                 .as_ref()
                 .ok_or_else(|| eyre!("Missing payload for dispatch"))?
                 .clone(),
+            params.confirmations,
             params.verbose,
         )
         .await?
@@ -151,6 +152,7 @@ async fn perform_transactions(
             message_id.ok_or_else(|| eyre!("Missing message ID for pay"))?,
             dest_id,
             params.gas,
+            params.confirmations,
             params.verbose,
         )
         .await?;

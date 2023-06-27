@@ -14,6 +14,7 @@ pub async fn dispatch<M: Middleware + 'static>(
     dest_id: u32,
     recipient_address: H160,
     message_body: Vec<u8>,
+    confirmations: usize,
     verbose: bool,
 ) -> Result<Option<H256>> {
     let mailbox = Mailbox::new(mailbox_address, Arc::clone(&client));
@@ -23,13 +24,14 @@ pub async fn dispatch<M: Middleware + 'static>(
         .dispatch(dest_id, recipient_address.into(), Bytes::from(message_body))
         .send()
         .await?
-        .confirmations(1)
+        .confirmations(confirmations)
         .await?;
 
     if verbose {
         println!("Transaction receipt: {:#?}", tx_receipt);
     };
 
+    println!();
     Ok(match tx_receipt {
         Some(receipt) => {
             println!(
