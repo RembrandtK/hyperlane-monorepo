@@ -5,7 +5,7 @@ use color_eyre::Result;
 use ethers::providers::Middleware;
 use hyperlane_core::H160;
 
-/// Dispatch a message to the Hyperlane mailbox contract.
+/// Deploy a set of mock contracts to the provided chain.
 pub async fn deploy_mock_contracts<M: Middleware + 'static>(
     client: Arc<M>,
     origin_id: u32,

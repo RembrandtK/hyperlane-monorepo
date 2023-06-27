@@ -34,7 +34,7 @@ struct MailboxLogBuilder<M, F> {
     map: Rc<LogItemMap>,
 }
 
-/// Builder for a MailboxLog
+/// Builder for a [`MailboxLog`]
 impl<M: Middleware + 'static, F> MailboxLogBuilder<M, F> {
     pub fn new(mailbox: Mailbox<M>, event: Event<Arc<M>, M, F>, log_type: MailboxLogType) -> Self {
         let map = LogItemMap::new(log_type);

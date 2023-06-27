@@ -7,16 +7,14 @@ pub use mock_mailbox::*;
     clippy::upper_case_acronyms,
     clippy::type_complexity,
     dead_code,
-    non_camel_case_types
+    non_camel_case_types,
 )]
 pub mod mock_mailbox {
     #[rustfmt::skip]
     const __ABI: &str = "[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_domain\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\",\"components\":[],\"indexed\":true},{\"internalType\":\"uint32\",\"name\":\"destination\",\"type\":\"uint32\",\"components\":[],\"indexed\":true},{\"internalType\":\"bytes32\",\"name\":\"recipient\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true},{\"internalType\":\"bytes\",\"name\":\"message\",\"type\":\"bytes\",\"components\":[],\"indexed\":false}],\"type\":\"event\",\"name\":\"Dispatch\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"DispatchId\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"messageId\",\"type\":\"bytes32\",\"components\":[],\"indexed\":true}],\"type\":\"event\",\"name\":\"ProcessId\",\"outputs\":[],\"anonymous\":false},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"MAX_MESSAGE_BODY_BYTES\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"VERSION\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_nonce\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"uint32\",\"name\":\"_origin\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"_sender\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"_recipient\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"bytes\",\"name\":\"_body\",\"type\":\"bytes\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"addInboundMessage\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_domain\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"contract MockMailbox\",\"name\":\"_mailbox\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"addRemoteMailbox\",\"outputs\":[]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"defaultIsm\",\"outputs\":[{\"internalType\":\"contract IInterchainSecurityModule\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"_destinationDomain\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"bytes32\",\"name\":\"_recipientAddress\",\"type\":\"bytes32\",\"components\":[]},{\"internalType\":\"bytes\",\"name\":\"_messageBody\",\"type\":\"bytes\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"dispatch\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"inboundMessages\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"nonce\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"uint32\",\"name\":\"origin\",\"type\":\"uint32\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\",\"components\":[]},{\"internalType\":\"bytes\",\"name\":\"body\",\"type\":\"bytes\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"inboundProcessedNonce\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"inboundUnprocessedNonce\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"localDomain\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"outboundNonce\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}]},{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"processNextInboundMessage\",\"outputs\":[]},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\",\"components\":[]}],\"stateMutability\":\"view\",\"type\":\"function\",\"name\":\"remoteMailboxes\",\"outputs\":[{\"internalType\":\"contract MockMailbox\",\"name\":\"\",\"type\":\"address\",\"components\":[]}]},{\"inputs\":[{\"internalType\":\"contract IInterchainSecurityModule\",\"name\":\"_module\",\"type\":\"address\",\"components\":[]}],\"stateMutability\":\"nonpayable\",\"type\":\"function\",\"name\":\"setDefaultIsm\",\"outputs\":[]}]";
     ///The parsed JSON ABI of the contract.
-    pub static MOCKMAILBOX_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> =
-        ::ethers::contract::Lazy::new(|| {
-            ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid")
-        });
+    pub static MOCKMAILBOX_ABI: ::ethers::contract::Lazy<::ethers::core::abi::Abi> = ::ethers::contract::Lazy::new(||
+    ::ethers::core::utils::__serde_json::from_str(__ABI).expect("ABI is always valid"));
     #[rustfmt::skip]
     const __BYTECODE: &[u8] = &[
         96,
@@ -5353,8 +5351,9 @@ pub mod mock_mailbox {
         51,
     ];
     ///The bytecode of the contract.
-    pub static MOCKMAILBOX_BYTECODE: ::ethers::core::types::Bytes =
-        ::ethers::core::types::Bytes::from_static(__BYTECODE);
+    pub static MOCKMAILBOX_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
+        __BYTECODE,
+    );
     #[rustfmt::skip]
     const __DEPLOYED_BYTECODE: &[u8] = &[
         96,
@@ -10528,8 +10527,9 @@ pub mod mock_mailbox {
         51,
     ];
     ///The deployed bytecode of the contract.
-    pub static MOCKMAILBOX_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes =
-        ::ethers::core::types::Bytes::from_static(__DEPLOYED_BYTECODE);
+    pub static MOCKMAILBOX_DEPLOYED_BYTECODE: ::ethers::core::types::Bytes = ::ethers::core::types::Bytes::from_static(
+        __DEPLOYED_BYTECODE,
+    );
     pub struct MockMailbox<M>(::ethers::contract::Contract<M>);
     impl<M> ::core::clone::Clone for MockMailbox<M> {
         fn clone(&self) -> Self {
@@ -10549,9 +10549,7 @@ pub mod mock_mailbox {
     }
     impl<M> ::core::fmt::Debug for MockMailbox<M> {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
-            f.debug_tuple(stringify!(MockMailbox))
-                .field(&self.address())
-                .finish()
+            f.debug_tuple(stringify!(MockMailbox)).field(&self.address()).finish()
         }
     }
     impl<M: ::ethers::providers::Middleware> MockMailbox<M> {
@@ -10561,11 +10559,13 @@ pub mod mock_mailbox {
             address: T,
             client: ::std::sync::Arc<M>,
         ) -> Self {
-            Self(::ethers::contract::Contract::new(
-                address.into(),
-                MOCKMAILBOX_ABI.clone(),
-                client,
-            ))
+            Self(
+                ::ethers::contract::Contract::new(
+                    address.into(),
+                    MOCKMAILBOX_ABI.clone(),
+                    client,
+                ),
+            )
         }
         /// Constructs the general purpose `Deployer` instance based on the provided constructor arguments and sends it.
         /// Returns a new instance of a deployer that returns an instance of this contract after sending the transaction
@@ -10649,7 +10649,10 @@ pub mod mock_mailbox {
         ///Calls the contract's `defaultIsm` (0x6e5f516e) function
         pub fn default_ism(
             &self,
-        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
+        ) -> ::ethers::contract::builders::ContractCall<
+            M,
+            ::ethers::core::types::Address,
+        > {
             self.0
                 .method_hash([110, 95, 81, 110], ())
                 .expect("method not found (this should never happen)")
@@ -10703,13 +10706,17 @@ pub mod mock_mailbox {
                 .expect("method not found (this should never happen)")
         }
         ///Calls the contract's `localDomain` (0x8d3638f4) function
-        pub fn local_domain(&self) -> ::ethers::contract::builders::ContractCall<M, u32> {
+        pub fn local_domain(
+            &self,
+        ) -> ::ethers::contract::builders::ContractCall<M, u32> {
             self.0
                 .method_hash([141, 54, 56, 244], ())
                 .expect("method not found (this should never happen)")
         }
         ///Calls the contract's `outboundNonce` (0xfd10ebe5) function
-        pub fn outbound_nonce(&self) -> ::ethers::contract::builders::ContractCall<M, u32> {
+        pub fn outbound_nonce(
+            &self,
+        ) -> ::ethers::contract::builders::ContractCall<M, u32> {
             self.0
                 .method_hash([253, 16, 235, 229], ())
                 .expect("method not found (this should never happen)")
@@ -10726,7 +10733,10 @@ pub mod mock_mailbox {
         pub fn remote_mailboxes(
             &self,
             p0: u32,
-        ) -> ::ethers::contract::builders::ContractCall<M, ::ethers::core::types::Address> {
+        ) -> ::ethers::contract::builders::ContractCall<
+            M,
+            ::ethers::core::types::Address,
+        > {
             self.0
                 .method_hash([163, 180, 145, 159], p0)
                 .expect("method not found (this should never happen)")
@@ -10743,31 +10753,46 @@ pub mod mock_mailbox {
         ///Gets the contract's `Dispatch` event
         pub fn dispatch_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, DispatchFilter> {
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            DispatchFilter,
+        > {
             self.0.event()
         }
         ///Gets the contract's `DispatchId` event
         pub fn dispatch_id_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, DispatchIdFilter> {
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            DispatchIdFilter,
+        > {
             self.0.event()
         }
         ///Gets the contract's `ProcessId` event
         pub fn process_id_filter(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, ProcessIdFilter> {
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            ProcessIdFilter,
+        > {
             self.0.event()
         }
         /// Returns an `Event` builder for all the events of this contract.
         pub fn events(
             &self,
-        ) -> ::ethers::contract::builders::Event<::std::sync::Arc<M>, M, MockMailboxEvents>
-        {
-            self.0
-                .event_with_filter(::core::default::Default::default())
+        ) -> ::ethers::contract::builders::Event<
+            ::std::sync::Arc<M>,
+            M,
+            MockMailboxEvents,
+        > {
+            self.0.event_with_filter(::core::default::Default::default())
         }
     }
-    impl<M: ::ethers::providers::Middleware> From<::ethers::contract::Contract<M>> for MockMailbox<M> {
+    impl<M: ::ethers::providers::Middleware> From<::ethers::contract::Contract<M>>
+    for MockMailbox<M> {
         fn from(contract: ::ethers::contract::Contract<M>) -> Self {
             Self::new(contract.address(), contract.client())
         }
@@ -10780,7 +10805,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethevent(name = "Dispatch", abi = "Dispatch(address,uint32,bytes32,bytes)")]
     pub struct DispatchFilter {
@@ -10800,7 +10825,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethevent(name = "DispatchId", abi = "DispatchId(bytes32)")]
     pub struct DispatchIdFilter {
@@ -10815,7 +10840,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethevent(name = "ProcessId", abi = "ProcessId(bytes32)")]
     pub struct ProcessIdFilter {
@@ -10878,7 +10903,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "MAX_MESSAGE_BODY_BYTES", abi = "MAX_MESSAGE_BODY_BYTES()")]
     pub struct MaxMessageBodyBytesCall;
@@ -10891,7 +10916,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "VERSION", abi = "VERSION()")]
     pub struct VersionCall;
@@ -10904,7 +10929,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(
         name = "addInboundMessage",
@@ -10926,7 +10951,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "addRemoteMailbox", abi = "addRemoteMailbox(uint32,address)")]
     pub struct AddRemoteMailboxCall {
@@ -10942,7 +10967,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "defaultIsm", abi = "defaultIsm()")]
     pub struct DefaultIsmCall;
@@ -10955,7 +10980,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "dispatch", abi = "dispatch(uint32,bytes32,bytes)")]
     pub struct DispatchCall {
@@ -10972,7 +10997,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "inboundMessages", abi = "inboundMessages(uint256)")]
     pub struct InboundMessagesCall(pub ::ethers::core::types::U256);
@@ -10985,7 +11010,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "inboundProcessedNonce", abi = "inboundProcessedNonce()")]
     pub struct InboundProcessedNonceCall;
@@ -10998,7 +11023,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "inboundUnprocessedNonce", abi = "inboundUnprocessedNonce()")]
     pub struct InboundUnprocessedNonceCall;
@@ -11011,7 +11036,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "localDomain", abi = "localDomain()")]
     pub struct LocalDomainCall;
@@ -11024,7 +11049,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "outboundNonce", abi = "outboundNonce()")]
     pub struct OutboundNonceCall;
@@ -11037,12 +11062,9 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
-    #[ethcall(
-        name = "processNextInboundMessage",
-        abi = "processNextInboundMessage()"
-    )]
+    #[ethcall(name = "processNextInboundMessage", abi = "processNextInboundMessage()")]
     pub struct ProcessNextInboundMessageCall;
     ///Container type for all input parameters for the `remoteMailboxes` function with signature `remoteMailboxes(uint32)` and selector `0xa3b4919f`
     #[derive(
@@ -11053,7 +11075,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "remoteMailboxes", abi = "remoteMailboxes(uint32)")]
     pub struct RemoteMailboxesCall(pub u32);
@@ -11066,7 +11088,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     #[ethcall(name = "setDefaultIsm", abi = "setDefaultIsm(address)")]
     pub struct SetDefaultIsmCall {
@@ -11095,64 +11117,72 @@ pub mod mock_mailbox {
             data: impl AsRef<[u8]>,
         ) -> ::core::result::Result<Self, ::ethers::core::abi::AbiError> {
             let data = data.as_ref();
-            if let Ok(decoded) =
-                <MaxMessageBodyBytesCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <MaxMessageBodyBytesCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::MaxMessageBodyBytes(decoded));
             }
-            if let Ok(decoded) = <VersionCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <VersionCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Version(decoded));
             }
-            if let Ok(decoded) =
-                <AddInboundMessageCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <AddInboundMessageCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::AddInboundMessage(decoded));
             }
-            if let Ok(decoded) =
-                <AddRemoteMailboxCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <AddRemoteMailboxCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::AddRemoteMailbox(decoded));
             }
-            if let Ok(decoded) = <DefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <DefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::DefaultIsm(decoded));
             }
-            if let Ok(decoded) = <DispatchCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <DispatchCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::Dispatch(decoded));
             }
-            if let Ok(decoded) =
-                <InboundMessagesCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <InboundMessagesCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::InboundMessages(decoded));
             }
-            if let Ok(decoded) =
-                <InboundProcessedNonceCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <InboundProcessedNonceCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::InboundProcessedNonce(decoded));
             }
-            if let Ok(decoded) =
-                <InboundUnprocessedNonceCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <InboundUnprocessedNonceCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::InboundUnprocessedNonce(decoded));
             }
-            if let Ok(decoded) = <LocalDomainCall as ::ethers::core::abi::AbiDecode>::decode(data) {
+            if let Ok(decoded)
+                = <LocalDomainCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::LocalDomain(decoded));
             }
-            if let Ok(decoded) = <OutboundNonceCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <OutboundNonceCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::OutboundNonce(decoded));
             }
-            if let Ok(decoded) =
-                <ProcessNextInboundMessageCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <ProcessNextInboundMessageCall as ::ethers::core::abi::AbiDecode>::decode(
+                    data,
+                ) {
                 return Ok(Self::ProcessNextInboundMessage(decoded));
             }
-            if let Ok(decoded) =
-                <RemoteMailboxesCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <RemoteMailboxesCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::RemoteMailboxes(decoded));
             }
-            if let Ok(decoded) = <SetDefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data)
-            {
+            if let Ok(decoded)
+                = <SetDefaultIsmCall as ::ethers::core::abi::AbiDecode>::decode(data) {
                 return Ok(Self::SetDefaultIsm(decoded));
             }
             Err(::ethers::core::abi::Error::InvalidData.into())
@@ -11165,42 +11195,68 @@ pub mod mock_mailbox {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
                 Self::Version(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::AddInboundMessage(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::AddRemoteMailbox(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::DefaultIsm(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::Dispatch(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::InboundMessages(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::AddInboundMessage(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::AddRemoteMailbox(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::DefaultIsm(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::Dispatch(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::InboundMessages(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
                 Self::InboundProcessedNonce(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
                 Self::InboundUnprocessedNonce(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
-                Self::LocalDomain(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::OutboundNonce(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::LocalDomain(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::OutboundNonce(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
                 Self::ProcessNextInboundMessage(element) => {
                     ::ethers::core::abi::AbiEncode::encode(element)
                 }
-                Self::RemoteMailboxes(element) => ::ethers::core::abi::AbiEncode::encode(element),
-                Self::SetDefaultIsm(element) => ::ethers::core::abi::AbiEncode::encode(element),
+                Self::RemoteMailboxes(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
+                Self::SetDefaultIsm(element) => {
+                    ::ethers::core::abi::AbiEncode::encode(element)
+                }
             }
         }
     }
     impl ::core::fmt::Display for MockMailboxCalls {
         fn fmt(&self, f: &mut ::core::fmt::Formatter<'_>) -> ::core::fmt::Result {
             match self {
-                Self::MaxMessageBodyBytes(element) => ::core::fmt::Display::fmt(element, f),
+                Self::MaxMessageBodyBytes(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
                 Self::Version(element) => ::core::fmt::Display::fmt(element, f),
                 Self::AddInboundMessage(element) => ::core::fmt::Display::fmt(element, f),
                 Self::AddRemoteMailbox(element) => ::core::fmt::Display::fmt(element, f),
                 Self::DefaultIsm(element) => ::core::fmt::Display::fmt(element, f),
                 Self::Dispatch(element) => ::core::fmt::Display::fmt(element, f),
                 Self::InboundMessages(element) => ::core::fmt::Display::fmt(element, f),
-                Self::InboundProcessedNonce(element) => ::core::fmt::Display::fmt(element, f),
-                Self::InboundUnprocessedNonce(element) => ::core::fmt::Display::fmt(element, f),
+                Self::InboundProcessedNonce(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
+                Self::InboundUnprocessedNonce(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
                 Self::LocalDomain(element) => ::core::fmt::Display::fmt(element, f),
                 Self::OutboundNonce(element) => ::core::fmt::Display::fmt(element, f),
-                Self::ProcessNextInboundMessage(element) => ::core::fmt::Display::fmt(element, f),
+                Self::ProcessNextInboundMessage(element) => {
+                    ::core::fmt::Display::fmt(element, f)
+                }
                 Self::RemoteMailboxes(element) => ::core::fmt::Display::fmt(element, f),
                 Self::SetDefaultIsm(element) => ::core::fmt::Display::fmt(element, f),
             }
@@ -11285,7 +11341,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct MaxMessageBodyBytesReturn(pub ::ethers::core::types::U256);
     ///Container type for all return fields from the `VERSION` function with signature `VERSION()` and selector `0xffa1ad74`
@@ -11297,7 +11353,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct VersionReturn(pub u8);
     ///Container type for all return fields from the `defaultIsm` function with signature `defaultIsm()` and selector `0x6e5f516e`
@@ -11309,7 +11365,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct DefaultIsmReturn(pub ::ethers::core::types::Address);
     ///Container type for all return fields from the `dispatch` function with signature `dispatch(uint32,bytes32,bytes)` and selector `0xfa31de01`
@@ -11321,7 +11377,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct DispatchReturn(pub [u8; 32]);
     ///Container type for all return fields from the `inboundMessages` function with signature `inboundMessages(uint256)` and selector `0x92d28b3d`
@@ -11333,7 +11389,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct InboundMessagesReturn {
         pub nonce: u32,
@@ -11351,7 +11407,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct InboundProcessedNonceReturn(pub u32);
     ///Container type for all return fields from the `inboundUnprocessedNonce` function with signature `inboundUnprocessedNonce()` and selector `0x8209d312`
@@ -11363,7 +11419,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct InboundUnprocessedNonceReturn(pub u32);
     ///Container type for all return fields from the `localDomain` function with signature `localDomain()` and selector `0x8d3638f4`
@@ -11375,7 +11431,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct LocalDomainReturn(pub u32);
     ///Container type for all return fields from the `outboundNonce` function with signature `outboundNonce()` and selector `0xfd10ebe5`
@@ -11387,7 +11443,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct OutboundNonceReturn(pub u32);
     ///Container type for all return fields from the `remoteMailboxes` function with signature `remoteMailboxes(uint32)` and selector `0xa3b4919f`
@@ -11399,7 +11455,7 @@ pub mod mock_mailbox {
         Debug,
         PartialEq,
         Eq,
-        Hash,
+        Hash
     )]
     pub struct RemoteMailboxesReturn(pub ::ethers::core::types::Address);
 }

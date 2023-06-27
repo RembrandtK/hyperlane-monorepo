@@ -6,7 +6,7 @@
 //!
 //! # Usage
 //! ```
-//! hl <URL> [ACTIONS] [OPTIONS]
+//! hl <URL> [OPTIONS]
 //! ```
 //!
 //! # Arguments
@@ -18,11 +18,7 @@
 //! - `--query`: Queries for Hyperlane messages that were sent from the origin chain.
 //! - `--help`: Prints help message.
 //!
-//! # Options
-//! - `-k, --key <KEY>`: The private key when needed for signing as an H256 hex string (64 characters).
-//! - `-v, --verbose`: Provide verbose output including transaction logs.
-//! - `-h, --help`: Prints help details.
-//! - `-V, --version`: Prints the version number of the application.
+//! Run `hl --help` for more information.
 
 #![forbid(unsafe_code)]
 #![warn(missing_docs)]

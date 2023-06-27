@@ -1,5 +1,3 @@
-// https://crates.io/crates/ethers-solc
-
 use std::path::Path;
 
 use color_eyre::Result;

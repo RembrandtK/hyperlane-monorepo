@@ -87,7 +87,8 @@ pub struct CliArgs {
     #[arg(long, default_value = "100000")]
     pub gas: u32,
 
-    // /// Match criteria file in JSON format.
+    // TODO: Implement reading query criteria from file.
+    // / Read query criteria from file.
     // #[arg(short, long)]
     // pub file: Option<PathBuf>,
 
