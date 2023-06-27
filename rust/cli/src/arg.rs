@@ -25,16 +25,15 @@ pub struct CliArgs {
     #[clap(long, default_value = "false", default_missing_value = "true")]
     pub pay: bool,
 
-    // TODO: Get JSON format working
-    // / Query for messages, with criteria in either JSON or CSV format.
+    /// Query for messages, with criteria in either JSON or CSV format.
     ///
     /// CSV format (each item is a CSV list):
     ///     originDomain:senderAddress:destinationDomain:recipientAddress
     ///
     /// CSV example: 11155111,80001:0x05047e42F75eaFf3f6C7a347930F778FB41C5dD0:80001:0x36FdA966CfffF8a9Cdc814f546db0e6378bFef35
-    // /
-    // / JSON equivalent (outer list is optional if only one item):
-    // / [{"origin_domain":[11155111,80001],"sender_address":"0x5047e42f75eaff3f6c7a347930f778fb41c5dd0","destination_domain":80001,"recipient_address":"0x36fda966cffff8a9cdc814f546db0e6378bfef35"}]
+    ///
+    /// JSON equivalent (outer list is optional if only one item):
+    ///     [{"originDomain":[11155111,80001],"senderAddress":"0x05047e42f75eaff3f6c7a347930f778fb41c5dd0","destinationDomain":80001,"recipientAddress":"0x36fda966cffff8a9cdc814f546db0e6378bfef35"}]
     #[arg(long)]
     pub query: Vec<String>,
 

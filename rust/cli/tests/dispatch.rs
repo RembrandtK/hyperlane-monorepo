@@ -22,6 +22,7 @@ async fn test_message_dispatch() -> Result<()> {
         env.destination_domain,
         env.recipient_address,
         message.to_vec(),
+        1,
         false,
     )
     .await?;

@@ -24,7 +24,7 @@ Options:
   -k, --key <KEY>                      Private key (optional, if needed to sign), as H256 hex string (64 characters)
       --dispatch                       Perform message dispatch. Requires mailbox, key, and payload
       --pay                            Perform gas payment. Requires paymaster, key, and either a message id or being run with dispatch
-      --query <QUERY>                  CSV format (each item is a CSV list): originDomain:senderAddress:destinationDomain:recipientAddress
+      --query <QUERY>                  Query for messages, with criteria in either JSON or CSV format
       --mailbox <MAILBOX>              Mailbox contract address as H160 hex string (40 characters)
       --paymaster <PAYMASTER>          Paymaster contract address as H160 hex string (40 characters)
   -d, --dest <DEST>                    Destination chain identifier. Required for dispatch
@@ -72,9 +72,13 @@ Options:
           Perform gas payment. Requires paymaster, key, and either a message id or being run with dispatch
 
       --query <QUERY>
+          Query for messages, with criteria in either JSON or CSV format.
+
           CSV format (each item is a CSV list): originDomain:senderAddress:destinationDomain:recipientAddress
 
           CSV example: 11155111,80001:0x05047e42F75eaFf3f6C7a347930F778FB41C5dD0:80001:0x36FdA966CfffF8a9Cdc814f546db0e6378bFef35
+
+          JSON equivalent (outer list is optional if only one item): [{"originDomain":[11155111,80001],"senderAddress":"0x05047e42f75eaff3f6c7a347930f778fb41c5dd0","destinationDomain":80001,"recipientAddress":"0x36fda966cffff8a9cdc814f546db0e6378bfef35"}]
 
       --mailbox <MAILBOX>
           Mailbox contract address as H160 hex string (40 characters)
