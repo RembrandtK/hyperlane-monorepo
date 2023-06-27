@@ -75,7 +75,7 @@ pub struct CliArgs {
 
     /// Number of confirmation blocks to wait for
     #[arg(long, default_value = "1")]
-    pub confirmations: usize,
+    pub confirm: usize,
 
     /// Id of message to pay for
     #[arg(short, long, conflicts_with = "dispatch")]

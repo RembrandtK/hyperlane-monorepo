@@ -68,7 +68,7 @@ impl TryFrom<CliArgs> for Params {
         Ok(Self {
             rpc_url: args.url,
             verbose: args.verbose,
-            confirmations: args.confirmations,
+            confirmations: args.confirm,
             debug: args.debug,
             key: args.key,
 
