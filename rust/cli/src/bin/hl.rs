@@ -56,12 +56,12 @@ async fn main() -> Result<()> {
     Ok(())
 }
 
-fn get_params_from_args() -> Result<Params, color_eyre::Report> {
+fn get_params_from_args() -> Result<Params> {
     let params: Params = CliArgs::parse().try_into()?;
     Ok(params)
 }
 
-async fn run(params: &Params) -> Result<(), color_eyre::Report> {
+async fn run(params: &Params) -> Result<()> {
     let (provider, chain_id) = core::get_provider(params.rpc_url.clone()).await?;
     if let Some(dest_id) = params.dest_id {
         core::print_hyperlane_domain_details("Destination", dest_id);

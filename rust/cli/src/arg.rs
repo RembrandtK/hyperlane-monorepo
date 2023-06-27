@@ -99,7 +99,7 @@ pub struct CliArgs {
     //
     /// Start block number to search from.
     ///
-    /// If not specified, will search last 100 blocks.
+    /// If not specified, will search last 1000 blocks.
     ///
     /// If negative (-n), will search from latest block + 1 - n.
     #[arg(short, long, default_value = "-1000")]

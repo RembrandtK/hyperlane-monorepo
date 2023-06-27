@@ -118,7 +118,7 @@ Options:
   -s, --start-block <START_BLOCK>
           Start block number to search from.
 
-          If not specified, will search last 100 blocks.
+          If not specified, will search last 1000 blocks.
 
           If negative (-n), will search from latest block + 1 - n.
 
@@ -474,7 +474,7 @@ Process in block 3777469 from: 80001 Mumbai Ethereum Testnet
 
 Notice that the last log entry is not a Dispatch but a Process. The query command performed two underlying queries (ordering and deduplicating combined results, although in this case there would be no duplicates). One query on Dispatch events, and one on Process events.
 
-The last Process item was relayed from the Mumbai mailbox to the Sepolia mailbox. Hyperlane in action! Note that relaying speed is variable, and you might not have to wait for the message to appear.
+The last Process item was relayed from the Mumbai mailbox to the Sepolia mailbox. Hyperlane in action! Note that relaying speed is variable, and you might have to wait for the message to appear.
 
 I suggest exploring the CLI options using --help.
 
