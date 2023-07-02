@@ -170,7 +170,7 @@ fn match_items_from_criteria(criteria: &Vec<String>) -> Result<Vec<MatchItem>> {
 #[test]
 fn test_match_items_from_criteria() {
     let input = vec![
-        r#"[{"originDomain":[11155111,80001],"senderAddress":"0x05047e42f75eaff3f6c7a347930f778fb41c5dd0","destinationDomain":80001recipientAddress":"0x36fda966cffff8a9cdc814f546db0e6378bfef35"}]"#,
+        r#"[{"originDomain":[11155111,80001],"senderAddress":"0x05047e42f75eaff3f6c7a347930f778fb41c5dd0","destinationDomain":80001,"recipientAddress":"0x36fda966cffff8a9cdc814f546db0e6378bfef35"}]"#,
         "11155111,80001:0x05047e42F75eaFf3f6C7a347930F778FB41C5dD0:80001:0x36FdA966CfffF8a9Cdc814f546db0e6378bFef35",
     ].iter().map(|s| s.to_string()).collect::<Vec<String>>();
 
