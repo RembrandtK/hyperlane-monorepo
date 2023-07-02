@@ -295,7 +295,7 @@ The details will be different for your local run.
 You can query to see which messages have been recently dispatched by you:
 
 ```
-../target/debug/hl $S_URL --mailbox $S_MBOX --query :$M_SENDER::
+../target/debug/hl $S_URL --mailbox $S_MBOX --query :$S_SENDER::
 ```
 
 ```
