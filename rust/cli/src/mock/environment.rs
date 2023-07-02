@@ -84,7 +84,7 @@ impl MockEnvironment {
         let destination_mbox_mock = MockMailbox::new(destination_mbox_addr, client.clone());
 
         Ok(Self {
-            anvil: AnvilInstanceWrapper(anvil),
+            anvil: AnvilInstanceWrapper::new(anvil),
             provider,
             // environment,
             sender_key,

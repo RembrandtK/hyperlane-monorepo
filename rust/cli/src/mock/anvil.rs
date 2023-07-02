@@ -7,19 +7,28 @@ use std::{
 };
 
 /// Wrapper for AnvilInstance that implements Debug.
-pub struct AnvilInstanceWrapper(pub AnvilInstance);
+pub struct AnvilInstanceWrapper {
+    anvil: AnvilInstance,
+}
+
+impl AnvilInstanceWrapper {
+    /// Create a new AnvilInstanceWrapper.
+    pub fn new(anvil: AnvilInstance) -> Self {
+        Self { anvil }
+    }
+}
 
 impl Deref for AnvilInstanceWrapper {
     type Target = AnvilInstance;
 
     fn deref(&self) -> &Self::Target {
-        &self.0
+        &self.anvil
     }
 }
 
 impl DerefMut for AnvilInstanceWrapper {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
+        &mut self.anvil
     }
 }
 
