@@ -8,6 +8,7 @@ use ethers::{providers::Middleware, types::Bytes};
 use hyperlane_core::{H160, H256};
 
 /// Dispatch a message to the Hyperlane mailbox contract.
+/// Returns the message ID if the transaction was successful.
 pub async fn dispatch<M: Middleware + 'static>(
     client: Arc<M>,
     mailbox_address: H160,

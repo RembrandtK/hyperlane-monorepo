@@ -32,7 +32,11 @@ impl<'a> MailboxLogsIter<'a> {
 /// This is expected to be the case for executed transactions because the logs are stored in this order.
 ///
 /// This would not be the case for pending transactions, but this should not cause a problem in practice.
-/// The main consequence is that ordering can change until written to a block.
+/// The main consequence is that ordering might be unstable for transactions not yet written to a block,
+/// and duplicates might be shown for them. Not typically displaying pending transactions anyway.
+///
+/// Could be solved by presorting all logs, which would also enable showing just the last N logs.
+/// This would force them all to be in memory, but that might be the case anyway.
 impl<'a> Iterator for MailboxLogsIter<'a> {
     type Item = MailboxLogItem<'a>;
 

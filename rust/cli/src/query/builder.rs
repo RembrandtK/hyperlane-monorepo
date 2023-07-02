@@ -8,7 +8,7 @@ use relayer::settings::matching_list::{Filter, MatchItem};
 
 use super::{LogItemMap, MailboxLog, MailboxLogType};
 
-/// Building in initiated through []
+/// Building is initiated through MailboxLogs::new()
 pub async fn build_log<M: Middleware + 'static, F>(
     mailbox: &Mailbox<M>,
     event: Event<Arc<M>, M, F>,

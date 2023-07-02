@@ -112,8 +112,7 @@ impl MailboxLogItem<'_> {
     pub fn to_event<E: EthEvent>(&self) -> Result<Option<E>> {
         Ok(if self.event_signature() == E::signature() {
             let raw_log = RawLog::from(self.log.clone());
-            let event = E::decode_log(&raw_log)?;
-            Some(event)
+            Some(E::decode_log(&raw_log)?)
         } else {
             None
         })
@@ -214,7 +213,7 @@ impl PartialEq for MailboxLogItem<'_> {
 /// Order transactions with no block number after those with a block number.
 impl PartialOrd for MailboxLogItem<'_> {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
-        // Sort
+        // Sort by block number, with None (no block) last.
         let mut cmp = partial_cmp_some_lt_none(&self.block_number(), &other.block_number());
 
         if cmp == Some(Ordering::Equal) {
@@ -260,9 +259,9 @@ fn partial_cmp_some_lt_none<T: Ord>(a: &Option<T>, b: &Option<T>) -> Option<Orde
     match a {
         Some(a) => match b {
             Some(b) => Some(a.cmp(b)),
-            None => Some(Ordering::Greater),
+            None => Some(Ordering::Less),
         },
-        None => b.as_ref().map(|_| Ordering::Less),
+        None => b.as_ref().map(|_| Ordering::Greater),
     }
 }
 
@@ -277,5 +276,19 @@ impl Debug for MailboxLogItem<'_> {
             .field("log_index", &self.log_index())
             .field("data", &hex::encode(self.data()))
             .finish()
+    }
+}
+
+#[test]
+fn test_some_lt_none() {
+    for (a, cmp, b) in [
+        (Some(1), Some(Ordering::Less), Some(2)),
+        (Some(2), Some(Ordering::Greater), Some(1)),
+        (Some(1), Some(Ordering::Equal), Some(1)),
+        (Some(1), Some(Ordering::Less), None),
+        (None, Some(Ordering::Greater), Some(1)),
+        (None, None, None),
+    ] {
+        assert_eq!(partial_cmp_some_lt_none(&a, &b), cmp);
     }
 }

@@ -164,6 +164,9 @@ fn check_params(params: &Params) -> Result<()> {
         }
 
         if params.dispatch {
+            if params.mailbox_address.is_none() {
+                return Err(eyre!("Missing mailbox address for dispatch"));
+            }
             if params.recipient_address.is_none() {
                 return Err(eyre!("Missing recipient address for dispatch"));
             }

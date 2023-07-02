@@ -10,10 +10,7 @@ use ethers::providers::Middleware;
 use hyperlane_core::H160;
 use relayer::settings::matching_list::MatchingList;
 
-/// Query for messages sent to a Hyperlane mailbox contract matching a provided filter.
-///
-/// Filters are implemented as [Ethereum event filters](https://docs.ethers.io/v5/api/providers/provider/#Provider-getLogs).
-#[allow(unused_variables)]
+/// Query for messages sent to a Hyperlane mailbox contract that match the provided matching list.
 pub async fn query<M: Middleware + 'static>(
     client: Arc<M>,
     chain_id: u32,
@@ -25,20 +22,8 @@ pub async fn query<M: Middleware + 'static>(
 ) -> Result<()> {
     let mailbox = Arc::new(Mailbox::new(mailbox_address, Arc::clone(&client)));
 
-    let block_number = client
-        .get_block_number()
-        .await
-        .context("Failed to retrieve block number")?
-        .as_u64();
-
-    let end_block = std::cmp::min(
-        block_number,
-        resolve_negative_block_number(block_number, end_block),
-    );
-    let start_block = std::cmp::min(
-        end_block,
-        resolve_negative_block_number(block_number, start_block),
-    );
+    let (start_block, end_block) =
+        resolve_block_numbers(get_current_block(client).await?, start_block, end_block);
 
     println!("Querying logs from block {start_block} to {end_block}.");
 
@@ -56,6 +41,28 @@ pub async fn query<M: Middleware + 'static>(
     }
 
     Ok(())
+}
+
+/// Resolve block parameters to actual block numbers based on the current block number.
+fn resolve_block_numbers(current_block: u64, start_block: i32, end_block: i32) -> (u64, u64) {
+    let end_block = std::cmp::min(
+        current_block,
+        resolve_negative_block_number(current_block, end_block),
+    );
+    let start_block = std::cmp::min(
+        end_block,
+        resolve_negative_block_number(current_block, start_block),
+    );
+
+    (start_block, end_block)
+}
+
+async fn get_current_block<M: Middleware + 'static>(client: Arc<M>) -> Result<u64> {
+    Ok(client
+        .get_block_number()
+        .await
+        .context("Failed to retrieve block number")?
+        .as_u64())
 }
 
 fn print_log_item(log: crate::query::MailboxLogItem<'_>, verbose: bool) -> Result<()> {
@@ -147,3 +154,20 @@ fn resolve_negative_block_number(current_blocknumber: u64, relative_blocknumber:
 //         }
 //     }
 // }
+
+#[test]
+fn test_resolve_block_numbers() {
+    // Valid parameters
+    assert_eq!((90, 100), resolve_block_numbers(100, -11, -1));
+    assert_eq!((70, 80), resolve_block_numbers(100, 70, 80));
+    assert_eq!((90, 95), resolve_block_numbers(100, -11, -6));
+    assert_eq!((90, 95), resolve_block_numbers(100, 90, -6));
+    assert_eq!((90, 95), resolve_block_numbers(100, -11, 95));
+
+    // Best interpretation of parameters outside of block range
+    assert_eq!((81, 81), resolve_block_numbers(100, -10, -20));
+    assert_eq!((0, 0), resolve_block_numbers(100, -200, -150));
+    assert_eq!((0, 100), resolve_block_numbers(100, -200, -1));
+    assert_eq!((100, 100), resolve_block_numbers(100, 200, 300));
+    assert_eq!((10, 10), resolve_block_numbers(100, 50, 10));
+}
