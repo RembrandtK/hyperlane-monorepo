@@ -7,7 +7,6 @@ use ethers::{
 };
 use hyperlane_core::{H160, H256};
 
-#[ignore] // Mock contract does not support this currently, need to adapt
 #[tokio::test]
 async fn test_log_item_matching() -> Result<()> {
     let env = MockEnvironment::new().await?;
@@ -18,9 +17,6 @@ async fn test_log_item_matching() -> Result<()> {
     helpers::dispatch_message_to_mailbox(&env).await?;
     let ending_block = helpers::check_end_environment_state(&env, starting_block).await?;
 
-    // println!("{env:#?}");
-
-    // let wallet: LocalWallet = env.sender_key.into();
     let secret = SecretKey::<Secp256k1>::from_slice(env.sender_key.as_bytes())?;
     let wallet: LocalWallet = secret.into();
     let address = wallet.address();
@@ -40,7 +36,7 @@ async fn test_log_item_matching() -> Result<()> {
     //     env.origin_domain, address, env.destination_domain, &env.recipient_address
     // );
 
-    assert!(false);
+    // TODO: Check content of logs, not just that they exist.
 
     Ok(())
 }
@@ -103,7 +99,7 @@ async fn check_dispatched_message_match(
     }
     // println!("{:#?}", logs);
 
-    // assert_eq!(1, logs.len());
+    assert!(1 <= logs.len());
 
     Ok(())
 }

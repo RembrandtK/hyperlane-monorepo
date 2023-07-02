@@ -176,5 +176,6 @@ fn test_match_items_from_criteria() {
 
     let _match_items = match_items_from_criteria(&input).unwrap();
 
+    // TODO: Loopback test of deserialisation and re-serialisation to correct criteria (in JSON).
     // let output = match_items.iter().map(|m| serde_json::to_string(m)).collect();
 }
