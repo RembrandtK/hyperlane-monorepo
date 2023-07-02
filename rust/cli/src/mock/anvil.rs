@@ -1,4 +1,4 @@
-//! Provider AnvilWrapper for an AnvilInstance that implements Debug.
+//! Provide an AnvilWrapper implements Debug (an Deref) for an AnvilInstance.
 
 use ethers::utils::AnvilInstance;
 use std::{
