@@ -11,6 +11,34 @@ contract MockMailbox is Versioned {
     using TypeCasts for bytes32;
     // Domain of chain on which the contract is deployed
 
+    // ============ Events ============
+    // These events are as defined in the IMailbox interface
+
+    /**
+     * @notice Emitted when a new message is dispatched via Hyperlane
+     * @param sender The address that dispatched the message
+     * @param destination The destination domain of the message
+     * @param recipient The message recipient address on `destination`
+     * @param message Raw bytes of message
+     */
+    event Dispatch(
+        address indexed sender,
+        uint32 indexed destination,
+        bytes32 indexed recipient,
+        bytes message
+    );
+
+    /**
+     * @notice Emitted when a new message is dispatched via Hyperlane
+     * @param messageId The unique message identifier
+     */
+    event DispatchId(bytes32 indexed messageId);
+
+    /**
+     * @notice Emitted when a Hyperlane message is processed
+     * @param messageId The unique message identifier
+     */
+    event ProcessId(bytes32 indexed messageId);
     // ============ Constants ============
     uint32 public immutable localDomain;
     uint256 public constant MAX_MESSAGE_BODY_BYTES = 2 * 2**10;
@@ -60,8 +88,20 @@ contract MockMailbox is Versioned {
             _recipientAddress.bytes32ToAddress(),
             _messageBody
         );
+
+        emit Dispatch(
+            msg.sender,
+            _destinationDomain,
+            _recipientAddress,
+            _messageBody
+        );
+
         outboundNonce++;
-        return bytes32(0);
+
+        uint256 _id_as_uint = outboundNonce;
+        bytes32 _id = bytes32(_id_as_uint);
+        emit DispatchId(_id);
+        return _id;
     }
 
     function addInboundMessage(
@@ -128,6 +168,7 @@ contract MockMailbox is Versioned {
             if (address(_val) != address(0)) {
                 return _val;
             }
+            // solhint-disable-next-line no-empty-blocks
         } catch {}
         return defaultIsm;
     }
